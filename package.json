@@ -1,0 +1,50 @@
+{
+  "name": "upgrades-tests-scripts",
+  "version": "1.0.0",
+  "description": "Comprehensive EVM chain testing scripts",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx hardhat test",
+    "test:rpc": "npx hardhat run scripts/test-rpc-calls.js --network localhost",
+    "test:contracts": "npx hardhat run scripts/test-contracts.js --network localhost",
+    "test:transfers": "npx hardhat run scripts/test-transfers.js --network localhost",
+    "test:gas": "npx hardhat run scripts/test-gas-estimation.js --network localhost",
+    "test:all": "node scripts/run-tests.js",
+    "deploy:test": "npx hardhat run scripts/deploy-test-contracts.js --network localhost",
+    "test:hardhat": "npx hardhat run scripts/test-rpc-calls.js && npx hardhat run scripts/test-contracts.js && npx hardhat run scripts/test-transfers.js && npx hardhat run scripts/test-gas-estimation.js",
+    "test:all-runner": "node scripts/run-all-tests.js",
+    "test:legacy": "npm run test:rpc && npm run test:contracts && npm run test:transfers && npm run test:gas",
+    "compile": "npx hardhat compile",
+    "node": "npx hardhat node",
+    "clean": "npx hardhat clean"
+  },
+  "keywords": [
+    "ethereum",
+    "evm",
+    "blockchain",
+    "testing",
+    "hardhat",
+    "rpc"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
+    "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
+    "@nomicfoundation/hardhat-ethers": "^3.0.0",
+    "@nomicfoundation/hardhat-verify": "^2.0.0",
+    "@typechain/hardhat": "^9.1.0",
+    "@typechain/ethers-v6": "^0.5.0",
+    "chai": "^4.2.0",
+    "ethers": "^6.4.0",
+    "hardhat": "^2.19.0",
+    "hardhat-gas-reporter": "^1.0.8",
+    "solidity-coverage": "^0.8.1",
+    "typechain": "^8.3.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1"
+  }
+}
