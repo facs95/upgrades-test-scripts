@@ -22,7 +22,7 @@ module.exports = {
       chainId: 31337,
     },
     localhost: {
-      url: "http://127.0.0.1:8545",
+      url: RPC_URL,
       chainId: parseInt(CHAIN_ID),
       accounts:
         PRIVATE_KEY !== "0x" + "0".repeat(64)
