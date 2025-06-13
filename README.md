@@ -1,6 +1,6 @@
-# EVM Chain Comprehensive Testing Suite
+# Comprehensive Blockchain Testing Suite
 
-A comprehensive testing framework for EVM-based blockchain networks that validates RPC functionality, smart contract deployment and execution, native token transfers, and gas estimation accuracy.
+A comprehensive testing framework for both EVM-based blockchain networks and Cosmos SDK chains that validates RPC functionality, smart contract deployment and execution, native token transfers, gas estimation accuracy, and Cosmos SDK module functionality including bank module operations.
 
 ## 🚀 Features
 
@@ -14,6 +14,8 @@ A comprehensive testing framework for EVM-based blockchain networks that validat
 - **Batch Operations**: Test batch transactions and gas efficiency
 - **Error Handling**: Validate proper error responses and edge cases
 - **EIP-1559 Support**: Test modern transaction types and fee mechanisms
+- **Cosmos SDK Bank Module Testing**: Comprehensive testing of Cosmos SDK bank module queries and transactions
+- **Multi-Chain Support**: Test both EVM and Cosmos SDK functionality in a single framework
 
 ### Advanced Features
 
@@ -23,13 +25,16 @@ A comprehensive testing framework for EVM-based blockchain networks that validat
 - **Detailed Reporting**: Comprehensive test results with gas usage analytics
 - **Configurable Test Suites**: Run specific test categories or skip problematic tests
 - **Real-time Monitoring**: Track test progress with colored output and timing
+- **Cosmos SDK Integration**: Full support for Cosmos SDK chain testing with CosmJS
 
 ## 📋 Requirements
 
 - Node.js 16+
 - npm or yarn
-- Access to an EVM-compatible network (local, testnet, or mainnet)
-- Private key with sufficient balance for testing
+- Access to an EVM-compatible network (local, testnet, or mainnet) for EVM tests
+- Access to a Cosmos SDK chain (local, testnet, or mainnet) for Cosmos tests
+- Private key with sufficient balance for EVM testing
+- Mnemonic phrase with sufficient balance for Cosmos SDK testing
 
 ## 🛠 Installation
 
@@ -92,6 +97,28 @@ TEST_TIMEOUT=60000
 TEST_RETRIES=3
 ```
 
+#### Cosmos SDK Configuration
+```env
+# Cosmos SDK chain configuration
+COSMOS_RPC_URL=http://localhost:26657
+COSMOS_REST_URL=http://localhost:1317
+COSMOS_CHAIN_ID=cosmoshub-4
+COSMOS_MNEMONIC=abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about
+COSMOS_PREFIX=cosmos
+COSMOS_DENOM=uatom
+
+# Cosmos test configuration
+COSMOS_TEST_TIMEOUT=30000
+COSMOS_TEST_RETRIES=3
+COSMOS_GAS_PRICE=0.025uatom
+COSMOS_DEFAULT_GAS_LIMIT=200000
+
+# Bank module test configuration
+BANK_TEST_AMOUNT=1000000
+BANK_TEST_DENOM=uatom
+BANK_RECIPIENT_ADDRESS=cosmos1...
+```
+
 #### Gas Reporting
 ```env
 # Enable gas usage reporting
@@ -111,9 +138,19 @@ The project supports multiple network configurations through `hardhat.config.js`
 
 ### Quick Start
 
-Run all tests with default configuration:
+Run all EVM tests with default configuration:
 ```bash
 npm run test:all
+```
+
+Run comprehensive tests (EVM + Cosmos):
+```bash
+npm run test:comprehensive
+```
+
+Run only Cosmos SDK tests:
+```bash
+npm run test:cosmos
 ```
 
 ### Individual Test Suites
@@ -132,9 +169,44 @@ npm run test:transfers
 
 # Test gas estimation accuracy
 npm run test:gas
+
+# Test Cosmos SDK bank module
+npm run test:cosmos
 ```
 
 ### Advanced Usage
+
+#### Comprehensive Testing (EVM + Cosmos)
+```bash
+# Run both EVM and Cosmos tests
+RUN_EVM=true RUN_COSMOS=true npm run test:comprehensive
+
+# Run only EVM tests
+npm run test:comprehensive -- --evm-only
+
+# Run only Cosmos tests  
+npm run test:comprehensive -- --cosmos-only
+
+# Run with verbose output
+npm run test:comprehensive -- --verbose
+
+# Deploy contracts first, then run comprehensive tests
+npm run test:comprehensive -- --deploy
+```
+
+#### Cosmos-Specific Testing
+```bash
+# Run Cosmos tests with custom configuration
+COSMOS_RPC_URL=http://localhost:26657 COSMOS_CHAIN_ID=my-chain npm run test:cosmos
+
+# Run with verbose Cosmos output
+VERBOSE=true npm run test:cosmos
+
+# Test with different denomination
+BANK_TEST_DENOM=ustake BANK_TEST_AMOUNT=5000000 npm run test:cosmos
+```
+
+#### EVM-Specific Advanced Usage
 
 #### Deploy contracts first, then run all tests:
 ```bash
@@ -164,17 +236,24 @@ DEPLOY_FIRST=true npm run test:all
 
 ### Command Line Options
 
-The main test runner supports several command-line options:
+The test runners support several command-line options:
 
 ```bash
-# Enable verbose output
+# EVM tests with verbose output
 npm run test:all -- --verbose
 
-# Deploy contracts before testing
+# EVM tests with contract deployment
 npm run test:all -- --deploy
 
-# Show help
-npm run test:all -- --help
+# Comprehensive tests with various options
+npm run test:comprehensive -- --help
+npm run test:comprehensive -- --verbose
+npm run test:comprehensive -- --debug
+npm run test:comprehensive -- --evm-only
+npm run test:comprehensive -- --cosmos-only
+
+# Show help for comprehensive tests
+npm run test:comprehensive -- --help
 ```
 
 ## 📊 Test Suites
@@ -226,6 +305,31 @@ Gas estimation accuracy validation:
 - **EIP-1559**: Modern transaction type gas estimation
 - **Accuracy Analysis**: Compare estimated vs actual gas usage
 
+### 5. Cosmos SDK Bank Module Testing (`test-cosmos-bank.js`)
+
+Comprehensive Cosmos SDK bank module testing:
+
+#### Query Testing
+- **Balance Queries**: Individual and bulk balance queries
+- **Supply Queries**: Total supply and denomination-specific supply
+- **Metadata Queries**: Denomination metadata and traces
+- **Params Queries**: Bank module parameters
+- **Pagination**: Advanced pagination support for large datasets
+- **Spendable Balances**: Query spendable vs locked balances
+
+#### Transaction Testing
+- **Send Transactions**: Basic token transfers between accounts
+- **Multi-Send**: Batch transfer operations to multiple recipients
+- **Transaction Verification**: Balance verification after transfers
+- **Error Handling**: Invalid transactions and insufficient balance scenarios
+- **Gas Analysis**: Transaction gas usage and fee estimation
+
+#### Advanced Features
+- **Multiple Denominations**: Support for multiple token types
+- **IBC Token Support**: Testing with IBC transferred tokens
+- **Custom Address Prefixes**: Support for different Cosmos SDK chain prefixes
+- **Mnemonic-based Testing**: HD wallet derivation for multiple test accounts
+
 ## 📈 Test Results and Reporting
 
 ### Output Format
@@ -239,8 +343,12 @@ Tests provide detailed colored output with:
 ### Result Files
 
 Test results are automatically saved to:
-- `test-results/latest.json`: Latest test run results
-- `test-results/test-results-[timestamp].json`: Historical results
+- `test-results/latest.json`: Latest EVM test run results
+- `test-results/test-results-[timestamp].json`: Historical EVM results
+- `test-results/cosmos-bank-latest.json`: Latest Cosmos test results
+- `test-results/cosmos-bank-results-[timestamp].json`: Historical Cosmos results
+- `test-results/comprehensive-latest.json`: Latest comprehensive test results
+- `test-results/comprehensive-results-[timestamp].json`: Historical comprehensive results
 - `deployments/latest.json`: Contract deployment information
 - `deployments/addresses.json`: Quick contract address reference
 
@@ -307,6 +415,41 @@ VERBOSE=true DEBUG=true npm run test:all
 - Monitor transaction costs
 - Consider rate limiting
 
+#### Cosmos SDK Networks
+- Ensure sufficient balance in test denomination
+- Verify RPC and REST endpoints are accessible
+- Check chain-specific gas prices and limits
+- Confirm mnemonic generates valid addresses for the network
+
+### Common Cosmos Issues
+
+#### Connection Problems
+```
+Error: could not connect to Tendermint RPC
+```
+**Solution**: Verify COSMOS_RPC_URL is correct and accessible
+
+#### Insufficient Balance
+```
+Error: insufficient funds for fees
+```
+**Solution**: Ensure test account has sufficient tokens for fees and transfers
+
+#### Invalid Address
+```
+Error: invalid address format
+```
+**Solutions**:
+- Verify COSMOS_PREFIX matches your chain
+- Check mnemonic generates correct address format
+- Ensure recipient addresses use correct prefix
+
+#### Chain Configuration Issues
+```
+Error: chain-id mismatch
+```
+**Solution**: Verify COSMOS_CHAIN_ID matches the target network
+
 ## 🔧 Customization
 
 ### Adding New Tests
@@ -323,12 +466,26 @@ VERBOSE=true DEBUG=true npm run test:all
 3. **Create tests**: Add specific test functions
 4. **Configure environment**: Update necessary settings
 
+### Adding Cosmos SDK Module Tests
+
+1. **Create test file**: Follow the pattern in `test-cosmos-bank.js`
+2. **Implement test class**: Extend base Cosmos testing functionality
+3. **Add to comprehensive runner**: Include in `run-comprehensive-tests.js`
+4. **Update documentation**: Add test descriptions and configuration
+
 ### Network Support
 
+#### EVM Networks
 1. **Add network config**: Update `hardhat.config.js`
 2. **Set environment**: Configure network-specific variables
-3. **Test compatibility**: Verify RPC method support
+3. **Test compatibility**: Verify RPC method support  
 4. **Document differences**: Note any network-specific behaviors
+
+#### Cosmos SDK Networks
+1. **Configure chain**: Set COSMOS_RPC_URL, COSMOS_REST_URL, COSMOS_CHAIN_ID
+2. **Set denomination**: Configure COSMOS_DENOM and test amounts
+3. **Address prefix**: Set COSMOS_PREFIX for address generation
+4. **Test modules**: Verify which modules are available and enabled
 
 ## 📚 API Reference
 
@@ -362,13 +519,29 @@ const tester = new GasEstimationTester();
 const results = await tester.runAllTests();
 ```
 
+#### CosmosBankTester
+```javascript
+const { CosmosBankTester } = require('./scripts/test-cosmos-bank');
+const tester = new CosmosBankTester();
+const results = await tester.runAllTests();
+```
+
+#### ComprehensiveTestRunner
+```javascript
+const { ComprehensiveTestRunner } = require('./scripts/run-comprehensive-tests');
+const runner = new ComprehensiveTestRunner();
+const results = await runner.run();
+```
+
 ### Configuration Options
 
 All test classes support:
 - **Verbose mode**: Detailed logging output
 - **Custom timeouts**: Configurable test timeouts
 - **Result filtering**: Skip or focus on specific tests
-- **Gas analysis**: Detailed gas usage reporting
+- **Gas analysis**: Detailed gas usage reporting (EVM)
+- **Multi-chain testing**: Run EVM and Cosmos tests together or separately
+- **Module-specific testing**: Focus on specific Cosmos SDK modules
 
 ## 🤝 Contributing
 
@@ -413,14 +586,22 @@ For issues, questions, or contributions:
 
 ## 🔗 Related Resources
 
+### EVM Resources
 - [Ethereum JSON-RPC Specification](https://ethereum.github.io/execution-apis/api-documentation/)
 - [Hardhat Documentation](https://hardhat.org/docs)
 - [Ethers.js Documentation](https://docs.ethers.org/)
 - [EIP-1559 Specification](https://eips.ethereum.org/EIPS/eip-1559)
 - [Solidity Documentation](https://docs.soliditylang.org/)
 
+### Cosmos SDK Resources
+- [Cosmos SDK Documentation](https://docs.cosmos.network/)
+- [CosmJS Documentation](https://cosmos.github.io/cosmjs/)
+- [Tendermint RPC Documentation](https://docs.tendermint.com/master/rpc/)
+- [Cosmos SDK Bank Module](https://docs.cosmos.network/main/modules/bank/)
+- [IBC Protocol](https://ibc.cosmos.network/)
+
 ---
 
 **Happy Testing! 🚀**
 
-*This testing suite helps ensure your EVM chain is fully compatible and performs optimally across all standard operations.*
+*This comprehensive testing suite helps ensure your blockchain - whether EVM-compatible or Cosmos SDK-based - is fully functional and performs optimally across all standard operations.*

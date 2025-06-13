@@ -1,0 +1,2096 @@
+
+> upgrades-tests-scripts@1.0.0 test:comprehensive
+> node scripts/run-comprehensive-tests.js
+
+[0m[1m[37m================================================================[0m[0m
+[0m[1m[37m            🚀 COMPREHENSIVE BLOCKCHAIN TESTING 🚀             [0m[0m
+[0m[1m[37m================================================================[0m[0m
+[0m
+[1mConfiguration:[0m[0m
+[0m  EVM Tests: [32mENABLED[0m[0m
+[0m  Cosmos Tests: [32mENABLED[0m[0m
+[0m  Deploy Contracts First: No[0m
+[0m  Verbose Mode: Yes[0m
+[0m  Debug Mode: No[0m
+[0m
+[1m=== CHECKING EVM PREREQUISITES ===[0m[0m
+[0m[32m✓ Connected to EVM network: hardhat (Chain ID: 31337)[0m[0m
+[0m[32m✓ Found 20 account(s)[0m[0m
+[0m[32m✓ Account balance: 10000.0 ETH[0m[0m
+[0m
+[1m=== CHECKING COSMOS PREREQUISITES ===[0m[0m
+[0m[32m✓ Cosmos RPC URL: http://localhost:26657[0m[0m
+[0m[32m✓ Cosmos REST URL: http://localhost:1317[0m[0m
+[0m[32m✓ Cosmos Chain ID: realionetwork_3301-1[0m[0m
+[0m[32m✓ Cosmos RPC endpoint is accessible[0m[0m
+[0m
+[1m[36m================================================[0m[0m
+[0m[1m[36mRUNNING EVM TEST SUITE: RPC CALLS[0m[0m
+[0m[1m[36m================================================[0m[0m
+[0m[1m[34mStarting comprehensive RPC testing...[0m[0m
+[0mProvider: Unknown[0m
+[0m
+[1m=== BASIC RPC CALLS ===[0m[0m
+[0m
+[36mTesting: eth_blockNumber[0m[0m
+[0m[32m✓ PASSED: eth_blockNumber (0ms)[0m[0m
+[0m  Result: {
+  "blockNumber": 0
+}[0m
+[0m
+[36mTesting: eth_chainId[0m[0m
+[0m[32m✓ PASSED: eth_chainId (0ms)[0m[0m
+[0m  Result: {
+  "chainId": "31337"
+}[0m
+[0m
+[36mTesting: eth_gasPrice[0m[0m
+[0m[32m✓ PASSED: eth_gasPrice (1ms)[0m[0m
+[0m  Result: {
+  "gasPrice": "1875000000"
+}[0m
+[0m
+[36mTesting: eth_getBalance[0m[0m
+[0m[32m✓ PASSED: eth_getBalance (2ms)[0m[0m
+[0m  Result: {
+  "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "balance": "10000000000000000000000",
+  "balanceInEth": "10000.0"
+}[0m
+[0m
+[36mTesting: eth_getTransactionCount[0m[0m
+[0m[32m✓ PASSED: eth_getTransactionCount (1ms)[0m[0m
+[0m  Result: {
+  "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "nonce": 0
+}[0m
+[0m
+[36mTesting: eth_getCode[0m[0m
+[0m[32m✓ PASSED: eth_getCode (1ms)[0m[0m
+[0m  Result: {
+  "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "code": "0x",
+  "isContract": false
+}[0m
+[0m
+[1m=== BLOCK AND TRANSACTION RPC CALLS ===[0m[0m
+[0m
+[36mTesting: eth_getBlockByNumber[0m[0m
+[0m[32m✓ PASSED: eth_getBlockByNumber (0ms)[0m[0m
+[0m  Result: {
+  "number": 0,
+  "hash": "0x9be4e7d100a3634121def22b111e92f7a260acab1fc47afce3a86caec8c6dfc0",
+  "timestamp": 1749855071,
+  "gasLimit": "30000000",
+  "gasUsed": "0",
+  "transactionCount": 0
+}[0m
+[0m
+[36mTesting: eth_getBlockByHash[0m[0m
+[0m[32m✓ PASSED: eth_getBlockByHash (0ms)[0m[0m
+[0m  Result: {
+  "number": 0,
+  "hash": "0x9be4e7d100a3634121def22b111e92f7a260acab1fc47afce3a86caec8c6dfc0",
+  "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+}[0m
+[0m
+[36mTesting: eth_getBlockByNumber (with transactions)[0m[0m
+[0m[32m✓ PASSED: eth_getBlockByNumber (with transactions) (1ms)[0m[0m
+[0m  Result: {
+  "number": 0,
+  "transactionCount": 0,
+  "hasTransactionDetails": false
+}[0m
+[0m
+[36mTesting: eth_getStorageAt[0m[0m
+[0m[32m✓ PASSED: eth_getStorageAt (0ms)[0m[0m
+[0m  Result: {
+  "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "position": 0,
+  "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+}[0m
+[0m
+[1m=== TRANSACTION RPC CALLS ===[0m[0m
+[0m
+[36mTesting: Create test transaction[0m[0m
+[0m[32m✓ PASSED: Create test transaction (3ms)[0m[0m
+[0m  Result: {
+  "hash": "0xfcb7acf949d2c888729a9b1275e211bf4a27db00dfe220013dbb83932011f404",
+  "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "to": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "value": "1000000000000000"
+}[0m
+[0m
+[36mTesting: eth_getTransactionByHash[0m[0m
+[0m[32m✓ PASSED: eth_getTransactionByHash (0ms)[0m[0m
+[0m  Result: {
+  "hash": "0xfcb7acf949d2c888729a9b1275e211bf4a27db00dfe220013dbb83932011f404",
+  "blockNumber": 1,
+  "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "to": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "gasLimit": "21000",
+  "gasPrice": "1875000000"
+}[0m
+[0m
+[36mTesting: eth_getTransactionReceipt[0m[0m
+[0m[32m✓ PASSED: eth_getTransactionReceipt (1ms)[0m[0m
+[0m  Result: {
+  "transactionHash": "0xfcb7acf949d2c888729a9b1275e211bf4a27db00dfe220013dbb83932011f404",
+  "blockNumber": 1,
+  "gasUsed": "21000",
+  "status": 1,
+  "logs": 0
+}[0m
+[0m
+[36mTesting: eth_estimateGas[0m[0m
+[0m[32m✓ PASSED: eth_estimateGas (1ms)[0m[0m
+[0m  Result: {
+  "gasEstimate": "21001"
+}[0m
+[0m
+[36mTesting: eth_call[0m[0m
+[0m[32m✓ PASSED: eth_call (1ms)[0m[0m
+[0m  Result: {
+  "result": "eth_call completed"
+}[0m
+[0m
+[1m=== FILTER AND LOG RPC CALLS ===[0m[0m
+[0m
+[36mTesting: eth_newFilter[0m[0m
+[0m[32m✓ PASSED: eth_newFilter (0ms)[0m[0m
+[0m  Result: {
+  "fromBlock": 0,
+  "toBlock": "latest",
+  "logsFound": 0
+}[0m
+[0m
+[36mTesting: eth_getLogs[0m[0m
+[0m[32m✓ PASSED: eth_getLogs (0ms)[0m[0m
+[0m  Result: {
+  "logsFound": 0,
+  "blockRange": "0 - 1"
+}[0m
+[0m
+[36mTesting: eth_getFilterLogs[0m[0m
+[0m[32m✓ PASSED: eth_getFilterLogs (1ms)[0m[0m
+[0m  Result: {
+  "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "logsFound": 0
+}[0m
+[0m
+[1m=== NET AND WEB3 RPC CALLS ===[0m[0m
+[0m
+[36mTesting: net_version[0m[0m
+[0m[32m✓ PASSED: net_version (0ms)[0m[0m
+[0m  Result: {
+  "chainId": "31337",
+  "name": "hardhat"
+}[0m
+[0m
+[36mTesting: web3_clientVersion[0m[0m
+[0m[32m✓ PASSED: web3_clientVersion (0ms)[0m[0m
+[0m  Result: {
+  "clientVersion": "HardhatNetwork/2.24.3/@nomicfoundation/edr/0.3.5"
+}[0m
+[0m
+[36mTesting: net_listening[0m[0m
+[0m[32m✓ PASSED: net_listening (1ms)[0m[0m
+[0m  Result: {
+  "listening": true
+}[0m
+[0m
+[36mTesting: net_peerCount[0m[0m
+[0m[32m✓ PASSED: net_peerCount (0ms)[0m[0m
+[0m  Result: {
+  "peerCount": "0x0"
+}[0m
+[0m
+[1m=== DEBUG AND TRACE RPC CALLS ===[0m[0m
+[0m
+[36mTesting: debug_traceTransaction[0m[0m
+[0m[32m✓ PASSED: debug_traceTransaction (1ms)[0m[0m
+[0m  Result: {
+  "transactionHash": "0xb03a36ac06cf625411770b628905e9053286c4236a84274d1c9ea6195d7e13a8",
+  "traceSupported": true,
+  "gasUsed": 21000
+}[0m
+[0m
+[36mTesting: trace_transaction[0m[0m
+[0m[32m✓ PASSED: trace_transaction (2ms)[0m[0m
+[0m  Result: {
+  "result": "trace_transaction not supported (this is normal)"
+}[0m
+[0m
+[1m=== EIP-1559 RPC CALLS ===[0m[0m
+[0m
+[36mTesting: eth_feeHistory[0m[0m
+[0m[32m✓ PASSED: eth_feeHistory (0ms)[0m[0m
+[0m  Result: {
+  "blockCount": 5,
+  "hasBaseFee": true,
+  "hasReward": true
+}[0m
+[0m
+[36mTesting: eth_maxPriorityFeePerGas[0m[0m
+[0m[32m✓ PASSED: eth_maxPriorityFeePerGas (0ms)[0m[0m
+[0m  Result: {
+  "maxPriorityFeePerGas": "0x3b9aca00"
+}[0m
+[0m
+[1m=== MISCELLANEOUS RPC CALLS ===[0m[0m
+[0m
+[36mTesting: eth_syncing[0m[0m
+[0m[32m✓ PASSED: eth_syncing (0ms)[0m[0m
+[0m  Result: {
+  "syncing": false,
+  "syncInfo": "not syncing"
+}[0m
+[0m
+[36mTesting: eth_mining[0m[0m
+[0m[32m✓ PASSED: eth_mining (0ms)[0m[0m
+[0m  Result: {
+  "mining": false
+}[0m
+[0m
+[36mTesting: eth_hashrate[0m[0m
+[0m[32m✓ PASSED: eth_hashrate (0ms)[0m[0m
+[0m  Result: {
+  "result": "eth_hashrate not supported (this is normal)"
+}[0m
+[0m
+[36mTesting: eth_accounts[0m[0m
+[0m[32m✓ PASSED: eth_accounts (0ms)[0m[0m
+[0m  Result: {
+  "accountCount": 20,
+  "hasAccounts": true
+}[0m
+[0m
+[1m=== TEST SUMMARY ===[0m[0m
+[0m[32mPassed: 30[0m[0m
+[0m[31mFailed: 0[0m[0m
+[0m[36mTotal: 30[0m[0m
+[0m[33mDuration: 18ms[0m[0m
+[0m[1mSuccess Rate: 100.0%[0m[0m
+[0m
+[32m✓ EVM RPC Calls completed in 18ms[0m[0m
+[0m
+[1m[36m================================================[0m[0m
+[0m[1m[36mRUNNING EVM TEST SUITE: CONTRACTS[0m[0m
+[0m[1m[36m================================================[0m[0m
+[0m[1m[34mStarting comprehensive contract testing...[0m[0m
+[0m
+[1m=== CONTRACT DEPLOYMENT ===[0m[0m
+[0m
+[36mTesting: Deploy TestContract[0m[0m
+[0m[32m✓ PASSED: Deploy TestContract (8ms)[0m[0m
+[0m  Result: {
+  "address": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+  "deployer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "codeSize": 20328
+}[0m
+[0m
+[36mTesting: Deploy TestERC20[0m[0m
+[0m[32m✓ PASSED: Deploy TestERC20 (8ms)[0m[0m
+[0m  Result: {
+  "address": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+  "name": "Test Token",
+  "symbol": "TEST",
+  "decimals": "18",
+  "totalSupply": "1000000000000000000000000"
+}[0m
+[0m
+[1m=== BASIC CONTRACT OPERATIONS ===[0m[0m
+[0m
+[36mTesting: Read initial state[0m[0m
+[0m[32m✓ PASSED: Read initial state (1ms)[0m[0m
+[0m  Result: {
+  "counter": "0",
+  "message": "Initial message",
+  "owner": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "isActive": true
+}[0m
+[0m
+[36mTesting: Pure function - add[0m[0m
+[0m[32m✓ PASSED: Pure function - add (1ms)[0m[0m
+[0m  Result: {
+  "result": "579"
+}[0m
+[0m
+[36mTesting: Pure function - multiply[0m[0m
+[0m[32m✓ PASSED: Pure function - multiply (1ms)[0m[0m
+[0m  Result: {
+  "result": "100"
+}[0m
+[0m
+[36mTesting: Pure function - string concatenation[0m[0m
+[0m[32m✓ PASSED: Pure function - string concatenation (0ms)[0m[0m
+[0m  Result: {
+  "result": "HelloWorld"
+}[0m
+[0m
+[36mTesting: Increment counter[0m[0m
+[0m[32m✓ PASSED: Increment counter (1ms)[0m[0m
+[0m  Result: {
+  "initialCounter": "0",
+  "newCounter": "1",
+  "gasUsed": "47186",
+  "txHash": "0x176c3da925713c2813400d11d279360b102570e637840e65d9695124a396ad7b"
+}[0m
+[0m
+[36mTesting: Increment counter by amount[0m[0m
+[0m[32m✓ PASSED: Increment counter by amount (1ms)[0m[0m
+[0m  Result: {
+  "initialCounter": "1",
+  "increment": 10,
+  "newCounter": "11"
+}[0m
+[0m
+[36mTesting: Set message (owner only)[0m[0m
+[0m[32m✓ PASSED: Set message (owner only) (1ms)[0m[0m
+[0m  Result: {
+  "newMessage": "Test message from contract tester",
+  "retrievedMessage": "Test message from contract tester"
+}[0m
+[0m
+[1m=== PAYABLE FUNCTIONS AND VALUE TRANSFER ===[0m[0m
+[0m
+[36mTesting: Deposit native tokens[0m[0m
+[0m[32m✓ PASSED: Deposit native tokens (3ms)[0m[0m
+[0m  Result: {
+  "depositAmount": "100000000000000000",
+  "initialBalance": "0",
+  "newBalance": "100000000000000000",
+  "initialContractBalance": "0",
+  "newContractBalance": "100000000000000000",
+  "gasUsed": "45437"
+}[0m
+[0m
+[36mTesting: Withdraw tokens[0m[0m
+[0m[32m✓ PASSED: Withdraw tokens (1ms)[0m[0m
+[0m  Result: {
+  "withdrawAmount": "50000000000000000",
+  "initialBalance": "100000000000000000",
+  "newBalance": "50000000000000000",
+  "gasUsed": "35695"
+}[0m
+[0m
+[36mTesting: Send ETH to receive function[0m[0m
+[0m[32m✓ PASSED: Send ETH to receive function (1ms)[0m[0m
+[0m  Result: {
+  "sendAmount": "10000000000000000",
+  "balanceAfterReceive": "60000000000000000"
+}[0m
+[0m
+[1m=== EVENT EMISSIONS ===[0m[0m
+[0m
+[36mTesting: Counter increment event[0m[0m
+[0m[32m✓ PASSED: Counter increment event (1ms)[0m[0m
+[0m  Result: {
+  "eventName": "CounterIncremented",
+  "newValue": "12",
+  "incrementer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "totalEvents": 1
+}[0m
+[0m
+[36mTesting: Message update event[0m[0m
+[0m[32m✓ PASSED: Message update event (2ms)[0m[0m
+[0m  Result: {
+  "eventName": "MessageUpdated",
+  "oldMessage": "Test message from contract tester",
+  "newMessage": "Event test message"
+}[0m
+[0m
+[1m=== COMPLEX DATA STRUCTURES ===[0m[0m
+[0m
+[36mTesting: Array operations[0m[0m
+[0m[32m✓ PASSED: Array operations (3ms)[0m[0m
+[0m  Result: {
+  "initialLength": "3",
+  "firstElement": "100",
+  "secondElement": "200",
+  "lengthAfterRemoval": "2"
+}[0m
+[0m
+[36mTesting: User registration (struct)[0m[0m
+[0m[32m✓ PASSED: User registration (struct) (2ms)[0m[0m
+[0m  Result: {
+  "userName": "TestUser",
+  "userAge": "25",
+  "isRegistered": true,
+  "userCount": "1",
+  "gasUsed": "136089"
+}[0m
+[0m
+[36mTesting: Add user scores[0m[0m
+[0m[32m✓ PASSED: Add user scores (2ms)[0m[0m
+[0m  Result: {
+  "scoresCount": 3,
+  "scores": [
+    "85",
+    "92",
+    "78"
+  ]
+}[0m
+[0m
+[1m=== ERC20 TOKEN OPERATIONS ===[0m[0m
+[0m
+[36mTesting: ERC20 basic info[0m[0m
+[0m[32m✓ PASSED: ERC20 basic info (1ms)[0m[0m
+[0m  Result: {
+  "name": "Test Token",
+  "symbol": "TEST",
+  "decimals": "18",
+  "totalSupply": "1000000000000000000000000",
+  "ownerBalance": "1000000000000000000000000"
+}[0m
+[0m
+[36mTesting: ERC20 transfer[0m[0m
+[0m[32m✓ PASSED: ERC20 transfer (2ms)[0m[0m
+[0m  Result: {
+  "transferAmount": "100000000000000000000",
+  "initialBalance": "1000000000000000000000000",
+  "finalBalance": "999900000000000000000000",
+  "initialRecipientBalance": "0",
+  "finalRecipientBalance": "100000000000000000000",
+  "gasUsed": "124751"
+}[0m
+[0m
+[36mTesting: ERC20 approve and transferFrom[0m[0m
+[0m[32m✓ PASSED: ERC20 approve and transferFrom (2ms)[0m[0m
+[0m  Result: {
+  "approveAmount": "50000000000000000000",
+  "transferAmount": "25000000000000000000",
+  "initialAllowance": "50000000000000000000",
+  "finalAllowance": "25000000000000000000",
+  "gasUsed": "64166"
+}[0m
+[0m
+[36mTesting: ERC20 mint[0m[0m
+[0m[32m✓ PASSED: ERC20 mint (2ms)[0m[0m
+[0m  Result: {
+  "mintAmount": "1000000000000000000000",
+  "initialSupply": "1000000000000000000000000",
+  "finalSupply": "1001000000000000000000000",
+  "initialBalance": "999875000000000000000000",
+  "finalBalance": "1000875000000000000000000",
+  "gasUsed": "60207"
+}[0m
+[0m
+[36mTesting: ERC20 burn[0m[0m
+[0m[32m✓ PASSED: ERC20 burn (2ms)[0m[0m
+[0m  Result: {
+  "burnAmount": "100000000000000000000",
+  "initialSupply": "1001000000000000000000000",
+  "finalSupply": "1000900000000000000000000",
+  "initialBalance": "1000875000000000000000000",
+  "finalBalance": "1000775000000000000000000",
+  "gasUsed": "59585"
+}[0m
+[0m
+[1m=== ERROR HANDLING ===[0m[0m
+[0m
+[36mTesting: Force revert with reason[0m[0m
+[0m[32m✓ PASSED: Force revert with reason (1ms)[0m[0m
+[0m  Result: {
+  "result": "Revert caught correctly",
+  "reason": "Test revert message"
+}[0m
+[0m
+[36mTesting: Custom error handling[0m[0m
+[0m[32m✓ PASSED: Custom error handling (1ms)[0m[0m
+[0m  Result: {
+  "result": "Custom error caught correctly"
+}[0m
+[0m
+[36mTesting: Require condition failure[0m[0m
+[0m[32m✓ PASSED: Require condition failure (0ms)[0m[0m
+[0m  Result: {
+  "result": "Require condition caught correctly"
+}[0m
+[0m
+[36mTesting: Unauthorized access[0m[0m
+[0m[32m✓ PASSED: Unauthorized access (1ms)[0m[0m
+[0m  Result: {
+  "result": "Access control working correctly"
+}[0m
+[0m
+[36mTesting: ERC20 insufficient balance[0m[0m
+[0m[32m✓ PASSED: ERC20 insufficient balance (1ms)[0m[0m
+[0m  Result: {
+  "result": "ERC20 balance check working correctly"
+}[0m
+[0m
+[1m=== GAS INTENSIVE OPERATIONS ===[0m[0m
+[0m
+[36mTesting: Gas intensive loop[0m[0m
+[0m[32m✓ PASSED: Gas intensive loop (1ms)[0m[0m
+[0m  Result: {
+  "iterations": 100,
+  "gasUsed": "68354",
+  "gasPerIteration": "683"
+}[0m
+[0m
+[36mTesting: Gas intensive storage[0m[0m
+[0m[32m✓ PASSED: Gas intensive storage (1ms)[0m[0m
+[0m  Result: {
+  "operations": 50,
+  "gasUsed": "1119003",
+  "gasPerOperation": "22380"
+}[0m
+[0m
+[1m=== BATCH OPERATIONS ===[0m[0m
+[0m
+[36mTesting: Contract batch transfer[0m[0m
+[0m[32m✓ PASSED: Contract batch transfer (2ms)[0m[0m
+[0m  Result: {
+  "recipients": 2,
+  "totalAmount": "30000000000000000",
+  "gasUsed": "79550",
+  "balance1": "10000000000000000",
+  "balance2": "20000000000000000"
+}[0m
+[0m
+[36mTesting: ERC20 batch transfer[0m[0m
+[0m[32m✓ PASSED: ERC20 batch transfer (1ms)[0m[0m
+[0m  Result: {
+  "recipients": 2,
+  "gasUsed": "101609",
+  "balance1": "135000000000000000000",
+  "balance2": "20000000000000000000"
+}[0m
+[0m
+[1m=== BLOCKCHAIN SPECIFIC FUNCTIONS ===[0m[0m
+[0m
+[36mTesting: Timestamp operations[0m[0m
+[0m[32m✓ PASSED: Timestamp operations (2ms)[0m[0m
+[0m  Result: {
+  "currentTimestamp": "1749855105",
+  "lastActionTime": "1749855105",
+  "blockNumber": "34"
+}[0m
+[0m
+[36mTesting: Block hash[0m[0m
+[0m[32m✓ PASSED: Block hash (0ms)[0m[0m
+[0m  Result: {
+  "blockNumber": "33",
+  "blockHash": "0xff41961a53ec52a260afbe3529d79eb35897d6681bb814b5f851c13cf81b8975",
+  "hashLength": 66
+}[0m
+[0m
+[1m=== CONTRACT TEST SUMMARY ===[0m[0m
+[0m[32mPassed: 33[0m[0m
+[0m[31mFailed: 0[0m[0m
+[0m[36mTotal: 33[0m[0m
+[0m[33mDuration: 59ms[0m[0m
+[0m[1mSuccess Rate: 100.0%[0m[0m
+[0m
+[36mDeployed Contracts:[0m[0m
+[0mTestContract: 0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9[0m
+[0mTestERC20: 0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9[0m
+[0m
+[32m✓ EVM Contracts completed in 60ms[0m[0m
+[0m
+[1m[36m================================================[0m[0m
+[0m[1m[36mRUNNING EVM TEST SUITE: TRANSFERS[0m[0m
+[0m[1m[36m================================================[0m[0m
+[0m[1m[34mStarting comprehensive native token transfer testing...[0m[0m
+[0m
+[1m=== ACCOUNT SETUP ===[0m[0m
+[
+  HardhatEthersSigner {
+    _gasLimit: 30000000,
+    address: '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266',
+    provider: HardhatEthersProvider {
+      _hardhatProvider: [LazyInitializationProviderAdapter],
+      _networkName: 'hardhat',
+      _blockListeners: [],
+      _transactionHashListeners: Map(0) {},
+      _eventListeners: []
+    },
+    _accounts: {
+      initialIndex: 0,
+      count: 20,
+      path: "m/44'/60'/0'/0",
+      passphrase: '',
+      mnemonic: 'test test test test test test test test test test test junk',
+      accountsBalance: '10000000000000000000000'
+    }
+  },
+  HardhatEthersSigner {
+    _gasLimit: 30000000,
+    address: '0x70997970C51812dc3A010C7d01b50e0d17dc79C8',
+    provider: HardhatEthersProvider {
+      _hardhatProvider: [LazyInitializationProviderAdapter],
+      _networkName: 'hardhat',
+      _blockListeners: [],
+      _transactionHashListeners: Map(0) {},
+      _eventListeners: []
+    },
+    _accounts: {
+      initialIndex: 0,
+      count: 20,
+      path: "m/44'/60'/0'/0",
+      passphrase: '',
+      mnemonic: 'test test test test test test test test test test test junk',
+      accountsBalance: '10000000000000000000000'
+    }
+  },
+  HardhatEthersSigner {
+    _gasLimit: 30000000,
+    address: '0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC',
+    provider: HardhatEthersProvider {
+      _hardhatProvider: [LazyInitializationProviderAdapter],
+      _networkName: 'hardhat',
+      _blockListeners: [],
+      _transactionHashListeners: Map(0) {},
+      _eventListeners: []
+    },
+    _accounts: {
+      initialIndex: 0,
+      count: 20,
+      path: "m/44'/60'/0'/0",
+      passphrase: '',
+      mnemonic: 'test test test test test test test test test test test junk',
+      accountsBalance: '10000000000000000000000'
+    }
+  },
+  HardhatEthersSigner {
+    _gasLimit: 30000000,
+    address: '0x90F79bf6EB2c4f870365E785982E1f101E93b906',
+    provider: HardhatEthersProvider {
+      _hardhatProvider: [LazyInitializationProviderAdapter],
+      _networkName: 'hardhat',
+      _blockListeners: [],
+      _transactionHashListeners: Map(0) {},
+      _eventListeners: []
+    },
+    _accounts: {
+      initialIndex: 0,
+      count: 20,
+      path: "m/44'/60'/0'/0",
+      passphrase: '',
+      mnemonic: 'test test test test test test test test test test test junk',
+      accountsBalance: '10000000000000000000000'
+    }
+  },
+  HardhatEthersSigner {
+    _gasLimit: 30000000,
+    address: '0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65',
+    provider: HardhatEthersProvider {
+      _hardhatProvider: [LazyInitializationProviderAdapter],
+      _networkName: 'hardhat',
+      _blockListeners: [],
+      _transactionHashListeners: Map(0) {},
+      _eventListeners: []
+    },
+    _accounts: {
+      initialIndex: 0,
+      count: 20,
+      path: "m/44'/60'/0'/0",
+      passphrase: '',
+      mnemonic: 'test test test test test test test test test test test junk',
+      accountsBalance: '10000000000000000000000'
+    }
+  },
+  HardhatEthersSigner {
+    _gasLimit: 30000000,
+    address: '0x9965507D1a55bcC2695C58ba16FB37d819B0A4dc',
+    provider: HardhatEthersProvider {
+      _hardhatProvider: [LazyInitializationProviderAdapter],
+      _networkName: 'hardhat',
+      _blockListeners: [],
+      _transactionHashListeners: Map(0) {},
+      _eventListeners: []
+    },
+    _accounts: {
+      initialIndex: 0,
+      count: 20,
+      path: "m/44'/60'/0'/0",
+      passphrase: '',
+      mnemonic: 'test test test test test test test test test test test junk',
+      accountsBalance: '10000000000000000000000'
+    }
+  },
+  HardhatEthersSigner {
+    _gasLimit: 30000000,
+    address: '0x976EA74026E726554dB657fA54763abd0C3a0aa9',
+    provider: HardhatEthersProvider {
+      _hardhatProvider: [LazyInitializationProviderAdapter],
+      _networkName: 'hardhat',
+      _blockListeners: [],
+      _transactionHashListeners: Map(0) {},
+      _eventListeners: []
+    },
+    _accounts: {
+      initialIndex: 0,
+      count: 20,
+      path: "m/44'/60'/0'/0",
+      passphrase: '',
+      mnemonic: 'test test test test test test test test test test test junk',
+      accountsBalance: '10000000000000000000000'
+    }
+  },
+  HardhatEthersSigner {
+    _gasLimit: 30000000,
+    address: '0x14dC79964da2C08b23698B3D3cc7Ca32193d9955',
+    provider: HardhatEthersProvider {
+      _hardhatProvider: [LazyInitializationProviderAdapter],
+      _networkName: 'hardhat',
+      _blockListeners: [],
+      _transactionHashListeners: Map(0) {},
+      _eventListeners: []
+    },
+    _accounts: {
+      initialIndex: 0,
+      count: 20,
+      path: "m/44'/60'/0'/0",
+      passphrase: '',
+      mnemonic: 'test test test test test test test test test test test junk',
+      accountsBalance: '10000000000000000000000'
+    }
+  },
+  HardhatEthersSigner {
+    _gasLimit: 30000000,
+    address: '0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f',
+    provider: HardhatEthersProvider {
+      _hardhatProvider: [LazyInitializationProviderAdapter],
+      _networkName: 'hardhat',
+      _blockListeners: [],
+      _transactionHashListeners: Map(0) {},
+      _eventListeners: []
+    },
+    _accounts: {
+      initialIndex: 0,
+      count: 20,
+      path: "m/44'/60'/0'/0",
+      passphrase: '',
+      mnemonic: 'test test test test test test test test test test test junk',
+      accountsBalance: '10000000000000000000000'
+    }
+  },
+  HardhatEthersSigner {
+    _gasLimit: 30000000,
+    address: '0xa0Ee7A142d267C1f36714E4a8F75612F20a79720',
+    provider: HardhatEthersProvider {
+      _hardhatProvider: [LazyInitializationProviderAdapter],
+      _networkName: 'hardhat',
+      _blockListeners: [],
+      _transactionHashListeners: Map(0) {},
+      _eventListeners: []
+    },
+    _accounts: {
+      initialIndex: 0,
+      count: 20,
+      path: "m/44'/60'/0'/0",
+      passphrase: '',
+      mnemonic: 'test test test test test test test test test test test junk',
+      accountsBalance: '10000000000000000000000'
+    }
+  },
+  HardhatEthersSigner {
+    _gasLimit: 30000000,
+    address: '0xBcd4042DE499D14e55001CcbB24a551F3b954096',
+    provider: HardhatEthersProvider {
+      _hardhatProvider: [LazyInitializationProviderAdapter],
+      _networkName: 'hardhat',
+      _blockListeners: [],
+      _transactionHashListeners: Map(0) {},
+      _eventListeners: []
+    },
+    _accounts: {
+      initialIndex: 0,
+      count: 20,
+      path: "m/44'/60'/0'/0",
+      passphrase: '',
+      mnemonic: 'test test test test test test test test test test test junk',
+      accountsBalance: '10000000000000000000000'
+    }
+  },
+  HardhatEthersSigner {
+    _gasLimit: 30000000,
+    address: '0x71bE63f3384f5fb98995898A86B02Fb2426c5788',
+    provider: HardhatEthersProvider {
+      _hardhatProvider: [LazyInitializationProviderAdapter],
+      _networkName: 'hardhat',
+      _blockListeners: [],
+      _transactionHashListeners: Map(0) {},
+      _eventListeners: []
+    },
+    _accounts: {
+      initialIndex: 0,
+      count: 20,
+      path: "m/44'/60'/0'/0",
+      passphrase: '',
+      mnemonic: 'test test test test test test test test test test test junk',
+      accountsBalance: '10000000000000000000000'
+    }
+  },
+  HardhatEthersSigner {
+    _gasLimit: 30000000,
+    address: '0xFABB0ac9d68B0B445fB7357272Ff202C5651694a',
+    provider: HardhatEthersProvider {
+      _hardhatProvider: [LazyInitializationProviderAdapter],
+      _networkName: 'hardhat',
+      _blockListeners: [],
+      _transactionHashListeners: Map(0) {},
+      _eventListeners: []
+    },
+    _accounts: {
+      initialIndex: 0,
+      count: 20,
+      path: "m/44'/60'/0'/0",
+      passphrase: '',
+      mnemonic: 'test test test test test test test test test test test junk',
+      accountsBalance: '10000000000000000000000'
+    }
+  },
+  HardhatEthersSigner {
+    _gasLimit: 30000000,
+    address: '0x1CBd3b2770909D4e10f157cABC84C7264073C9Ec',
+    provider: HardhatEthersProvider {
+      _hardhatProvider: [LazyInitializationProviderAdapter],
+      _networkName: 'hardhat',
+      _blockListeners: [],
+      _transactionHashListeners: Map(0) {},
+      _eventListeners: []
+    },
+    _accounts: {
+      initialIndex: 0,
+      count: 20,
+      path: "m/44'/60'/0'/0",
+      passphrase: '',
+      mnemonic: 'test test test test test test test test test test test junk',
+      accountsBalance: '10000000000000000000000'
+    }
+  },
+  HardhatEthersSigner {
+    _gasLimit: 30000000,
+    address: '0xdF3e18d64BC6A983f673Ab319CCaE4f1a57C7097',
+    provider: HardhatEthersProvider {
+      _hardhatProvider: [LazyInitializationProviderAdapter],
+      _networkName: 'hardhat',
+      _blockListeners: [],
+      _transactionHashListeners: Map(0) {},
+      _eventListeners: []
+    },
+    _accounts: {
+      initialIndex: 0,
+      count: 20,
+      path: "m/44'/60'/0'/0",
+      passphrase: '',
+      mnemonic: 'test test test test test test test test test test test junk',
+      accountsBalance: '10000000000000000000000'
+    }
+  },
+  HardhatEthersSigner {
+    _gasLimit: 30000000,
+    address: '0xcd3B766CCDd6AE721141F452C550Ca635964ce71',
+    provider: HardhatEthersProvider {
+      _hardhatProvider: [LazyInitializationProviderAdapter],
+      _networkName: 'hardhat',
+      _blockListeners: [],
+      _transactionHashListeners: Map(0) {},
+      _eventListeners: []
+    },
+    _accounts: {
+      initialIndex: 0,
+      count: 20,
+      path: "m/44'/60'/0'/0",
+      passphrase: '',
+      mnemonic: 'test test test test test test test test test test test junk',
+      accountsBalance: '10000000000000000000000'
+    }
+  },
+  HardhatEthersSigner {
+    _gasLimit: 30000000,
+    address: '0x2546BcD3c84621e976D8185a91A922aE77ECEc30',
+    provider: HardhatEthersProvider {
+      _hardhatProvider: [LazyInitializationProviderAdapter],
+      _networkName: 'hardhat',
+      _blockListeners: [],
+      _transactionHashListeners: Map(0) {},
+      _eventListeners: []
+    },
+    _accounts: {
+      initialIndex: 0,
+      count: 20,
+      path: "m/44'/60'/0'/0",
+      passphrase: '',
+      mnemonic: 'test test test test test test test test test test test junk',
+      accountsBalance: '10000000000000000000000'
+    }
+  },
+  HardhatEthersSigner {
+    _gasLimit: 30000000,
+    address: '0xbDA5747bFD65F08deb54cb465eB87D40e51B197E',
+    provider: HardhatEthersProvider {
+      _hardhatProvider: [LazyInitializationProviderAdapter],
+      _networkName: 'hardhat',
+      _blockListeners: [],
+      _transactionHashListeners: Map(0) {},
+      _eventListeners: []
+    },
+    _accounts: {
+      initialIndex: 0,
+      count: 20,
+      path: "m/44'/60'/0'/0",
+      passphrase: '',
+      mnemonic: 'test test test test test test test test test test test junk',
+      accountsBalance: '10000000000000000000000'
+    }
+  },
+  HardhatEthersSigner {
+    _gasLimit: 30000000,
+    address: '0xdD2FD4581271e230360230F9337D5c0430Bf44C0',
+    provider: HardhatEthersProvider {
+      _hardhatProvider: [LazyInitializationProviderAdapter],
+      _networkName: 'hardhat',
+      _blockListeners: [],
+      _transactionHashListeners: Map(0) {},
+      _eventListeners: []
+    },
+    _accounts: {
+      initialIndex: 0,
+      count: 20,
+      path: "m/44'/60'/0'/0",
+      passphrase: '',
+      mnemonic: 'test test test test test test test test test test test junk',
+      accountsBalance: '10000000000000000000000'
+    }
+  },
+  HardhatEthersSigner {
+    _gasLimit: 30000000,
+    address: '0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199',
+    provider: HardhatEthersProvider {
+      _hardhatProvider: [LazyInitializationProviderAdapter],
+      _networkName: 'hardhat',
+      _blockListeners: [],
+      _transactionHashListeners: Map(0) {},
+      _eventListeners: []
+    },
+    _accounts: {
+      initialIndex: 0,
+      count: 20,
+      path: "m/44'/60'/0'/0",
+      passphrase: '',
+      mnemonic: 'test test test test test test test test test test test junk',
+      accountsBalance: '10000000000000000000000'
+    }
+  }
+]
+[0m
+[36mTesting: Check account balances[0m[0m
+[0m[32m✓ PASSED: Check account balances (0ms)[0m[0m
+[0m  Result: {
+  "accountCount": 5,
+  "balances": [
+    {
+      "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "balance": "9999830986052690955480",
+      "balanceInEth": "9999.83098605269095548"
+    },
+    {
+      "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "balance": "9999999908025507238162",
+      "balanceInEth": "9999.999908025507238162"
+    },
+    {
+      "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "balance": "10000000000000000000000",
+      "balanceInEth": "10000.0"
+    },
+    {
+      "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "balance": "10000000000000000000000",
+      "balanceInEth": "10000.0"
+    },
+    {
+      "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "balance": "10000000000000000000000",
+      "balanceInEth": "10000.0"
+    }
+  ],
+  "totalSigners": 20
+}[0m
+[0m
+[1m=== BASIC TRANSFERS ===[0m[0m
+[0m
+[36mTesting: Basic native token transfer[0m[0m
+[0m[32m✓ PASSED: Basic native token transfer (1ms)[0m[0m
+[0m  Result: {
+  "txHash": "0xbe7ad432a9903b2172bba2d5debef48b308abec29888938a6de4ee1abcc5863e",
+  "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "to": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+  "amount": "100000000000000",
+  "gasUsed": "21000",
+  "gasPrice": "1009945823",
+  "gasCost": "21208862283000",
+  "initialSenderBalance": "9999830986052690955480",
+  "finalSenderBalance": "9999830864843828672480",
+  "initialRecipientBalance": "9999999908025507238162",
+  "finalRecipientBalance": "10000000008025507238162"
+}[0m
+[0m
+[36mTesting: Transfer to self[0m[0m
+[0m[32m✓ PASSED: Transfer to self (1ms)[0m[0m
+[0m  Result: {
+  "txHash": "0xbb4b3ccbf5685ba25fbfa3bb5c8321113daaa7f3b780f1f58ae6aab948ec3404",
+  "initialBalance": "9999830864843828672480",
+  "finalBalance": "9999830843661037616480",
+  "gasCost": "21182791056000",
+  "balanceDifference": "21182791056000"
+}[0m
+[0m
+[36mTesting: Zero amount transfer[0m[0m
+[0m[32m✓ PASSED: Zero amount transfer (1ms)[0m[0m
+[0m  Result: {
+  "txHash": "0x32f4ae53cd386686c2eb5c71f67d48116213bbad9d3d3f79e15ef43407690fa7",
+  "amount": "0",
+  "gasUsed": "21000",
+  "gasCost": "21159974178000",
+  "balanceChange": "21159974178000"
+}[0m
+[0m
+[1m=== TRANSFER VARIATIONS ===[0m[0m
+[0m
+[36mTesting: Transfer 0.0001 ETH[0m[0m
+[0m[32m✓ PASSED: Transfer 0.0001 ETH (1ms)[0m[0m
+[0m  Result: {
+  "amount": "100000000000000",
+  "amountInEth": "0.0001",
+  "gasUsed": "21000",
+  "txHash": "0x308f669cb2ba8934f5207946fdd22b71a8bd8a19e132f4ae7a19744e04b624d4"
+}[0m
+[0m
+[36mTesting: Transfer 0.01 ETH[0m[0m
+[0m[32m✓ PASSED: Transfer 0.01 ETH (0ms)[0m[0m
+[0m  Result: {
+  "amount": "10000000000000000",
+  "amountInEth": "0.01",
+  "gasUsed": "21000",
+  "txHash": "0xad9d758e7afab1a296bfe00e21b4dc76f6749870ffeaf25d9f05920856132c75"
+}[0m
+[0m
+[36mTesting: Transfer 0.000000001 ETH[0m[0m
+[0m[32m✓ PASSED: Transfer 0.000000001 ETH (0ms)[0m[0m
+[0m  Result: {
+  "amount": "1000000000",
+  "amountInEth": "0.000000001",
+  "gasUsed": "21000",
+  "txHash": "0xf5a22358d8c62a90e111b53254b4245e58194003e8d59e7e528b743444ea216e"
+}[0m
+[0m
+[36mTesting: Transfer 0.000000000000000001 ETH[0m[0m
+[0m[32m✓ PASSED: Transfer 0.000000000000000001 ETH (1ms)[0m[0m
+[0m  Result: {
+  "amount": "1",
+  "amountInEth": "0.000000000000000001",
+  "gasUsed": "21000",
+  "txHash": "0x91f054bb374c1b94e040836e47a870da37f9c8d7adc0b8cee5a69614b25b6434"
+}[0m
+[0m
+[36mTesting: Transfer with custom gas price[0m[0m
+[0m[32m✓ PASSED: Transfer with custom gas price (1ms)[0m[0m
+[0m  Result: {
+  "requestedGasPrice": "1204693389",
+  "actualGasPrice": "1204693389",
+  "gasUsed": "21000",
+  "txHash": "0x7818d72be88318b4d631f11b588008b91df19504ec26981c5449181a32683d9a"
+}[0m
+[0m
+[36mTesting: Transfer with custom gas limit[0m[0m
+[0m[32m✓ PASSED: Transfer with custom gas limit (0ms)[0m[0m
+[0m  Result: {
+  "requestedGasLimit": "25000",
+  "actualGasUsed": "21000",
+  "gasEfficiency": "84%",
+  "txHash": "0x42c41bf15fc1e0313d9e0c662c496818b1fcb09627fcb9f3e91d5236761abae6"
+}[0m
+[0m
+[1m=== GAS ESTIMATION ===[0m[0m
+[0m
+[36mTesting: Gas estimation - basic transfer[0m[0m
+[0m[32m✓ PASSED: Gas estimation - basic transfer (1ms)[0m[0m
+[0m  Result: {
+  "estimatedGas": "21001",
+  "actualGasUsed": "21000",
+  "estimationAccuracy": "accurate",
+  "difference": "1"
+}[0m
+[0m
+[36mTesting: Gas estimation - 0.000000000000000001 ETH[0m[0m
+[0m[32m✓ PASSED: Gas estimation - 0.000000000000000001 ETH (0ms)[0m[0m
+[0m  Result: {
+  "amount": "1",
+  "amountInEth": "0.000000000000000001",
+  "gasEstimate": "21001"
+}[0m
+[0m
+[36mTesting: Gas estimation - 0.001 ETH[0m[0m
+[0m[32m✓ PASSED: Gas estimation - 0.001 ETH (0ms)[0m[0m
+[0m  Result: {
+  "amount": "1000000000000000",
+  "amountInEth": "0.001",
+  "gasEstimate": "21001"
+}[0m
+[0m
+[36mTesting: Gas estimation - 1.0 ETH[0m[0m
+[0m[32m✓ PASSED: Gas estimation - 1.0 ETH (0ms)[0m[0m
+[0m  Result: {
+  "amount": "1000000000000000000",
+  "amountInEth": "1.0",
+  "gasEstimate": "21001"
+}[0m
+[0m
+[36mTesting: Gas estimation - transfer to contract address[0m[0m
+[0m[32m✓ PASSED: Gas estimation - transfer to contract address (0ms)[0m[0m
+[0m  Result: {
+  "to": "0x1111111111111111111111111111111111111111",
+  "gasEstimate": "21001",
+  "result": "estimation successful"
+}[0m
+[0m
+[1m=== BATCH TRANSFERS ===[0m[0m
+[0m
+[36mTesting: Sequential batch transfers[0m[0m
+[0m[32m✓ PASSED: Sequential batch transfers (1ms)[0m[0m
+[0m  Result: {
+  "recipientCount": 3,
+  "totalAmount": "3000000000000000",
+  "totalGasUsed": "63000",
+  "averageGasPerTransfer": "21000",
+  "transfers": [
+    {
+      "to": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "amount": "1000000000000000",
+      "gasUsed": "21000",
+      "txHash": "0x00bc3ee4546ddbf68a82325aacd017ff2169fdd08e91c3caad8133c8a75ec90e"
+    },
+    {
+      "to": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "amount": "1000000000000000",
+      "gasUsed": "21000",
+      "txHash": "0xb60beb7af083f7a8f52001fe609ebdb85903b9e936aea26bd3818a36fab84775"
+    },
+    {
+      "to": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "amount": "1000000000000000",
+      "gasUsed": "21000",
+      "txHash": "0x2c2f2040b225236626fcc56d7bb5904febea198536670e382818dfa851fa4b90"
+    }
+  ]
+}[0m
+[0m
+[36mTesting: Rapid sequential transfers[0m[0m
+[0m[32m✓ PASSED: Rapid sequential transfers (2ms)[0m[0m
+[0m  Result: {
+  "transferCount": 5,
+  "totalTime": 2,
+  "timePerTransfer": 0.4,
+  "totalGasUsed": "105000",
+  "averageGasPerTransfer": "21000"
+}[0m
+[0m
+[1m=== EDGE CASES ===[0m[0m
+[0m
+[36mTesting: Insufficient balance transfer[0m[0m
+[0m[32m✓ PASSED: Insufficient balance transfer (1ms)[0m[0m
+[0m  Result: {
+  "result": "Insufficient balance correctly rejected",
+  "balance": "9999816602313820656479",
+  "attemptedAmount": "10000816602313820656479",
+  "errorType": "ProviderError",
+  "errorMessage": "Sender doesn't have enough funds to send tx. The max upfront cost is: 10000846656451820656479 and the sender's balance is: 9999816602313820656479."
+}[0m
+[0m
+[1m=== TRANSACTION DETAILS ===[0m[0m
+[0m
+[36mTesting: Transaction receipt analysis[0m[0m
+[0m[32m✓ PASSED: Transaction receipt analysis (0ms)[0m[0m
+[0m  Result: {
+  "txHash": "0xb10e47970888bc651a1695ba61ef61e820912a214da00bd206c105d6f303848b",
+  "blockNumber": 53,
+  "blockHash": "0xe6426594ae20e9d741367490dca9336ba98ea21402d701783f51f65c58094a6d",
+  "transactionIndex": 0,
+  "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "to": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+  "value": "100000000000000",
+  "gasLimit": "30000000",
+  "gasUsed": "21000",
+  "gasPrice": "1000902300",
+  "nonce": 50,
+  "status": 1,
+  "confirmations": 1
+}[0m
+[0m
+[36mTesting: Transaction confirmation tracking[0m[0m
+[0m[32m✓ PASSED: Transaction confirmation tracking (5002ms)[0m[0m
+[0m  Result: {
+  "txHash": "0x79cc57a9f73f277dbf8f7a707d6e63584e8a378d90e80dad37ece07ad0570b5f",
+  "confirmations": 1,
+  "startBlock": 54,
+  "result": "Timeout waiting for additional confirmations (normal for fast networks)"
+}[0m
+[0m
+[36mTesting: Nonce management[0m[0m
+[0m[32m✓ PASSED: Nonce management (2ms)[0m[0m
+[0m  Result: {
+  "initialNonce": 52,
+  "finalNonce": 54,
+  "nonceIncrease": 2,
+  "tx1Hash": "0xb4a31975faff02d5f1735e28a03347c4455a9a580c910505f381276ee49c0015",
+  "tx2Hash": "0x1eae1e6f17f9b3b5e86863e562a65db62cc8576cc26bcf88a91dcada1228856b",
+  "tx1Nonce": 52,
+  "tx2Nonce": 53
+}[0m
+[0m
+[1m=== TRANSFER REPORT ===[0m[0m
+[0mTotal Transfers Executed: 1[0m
+[0mTotal Gas Used: 21000[0m
+[0mAverage Gas per Transfer: 21000[0m
+[0m
+[1m=== TRANSFER TEST SUMMARY ===[0m[0m
+[0m[32mPassed: 21[0m[0m
+[0m[31mFailed: 0[0m[0m
+[0m[36mTotal: 21[0m[0m
+[0m[33mDuration: 5020ms[0m[0m
+[0m[1mSuccess Rate: 100.0%[0m[0m
+[0m
+[32m✓ EVM Transfers completed in 5020ms[0m[0m
+[0m
+[1m[36m================================================[0m[0m
+[0m[1m[36mRUNNING EVM TEST SUITE: GAS ESTIMATION[0m[0m
+[0m[1m[36m================================================[0m[0m
+[0m[1m[34mStarting comprehensive gas estimation testing...[0m[0m
+[0m
+[1m=== ENVIRONMENT SETUP ===[0m[0m
+[0m
+[36mTesting: Check network gas price[0m[0m
+[0m[32m✓ PASSED: Check network gas price (0ms)[0m[0m
+[0m  Result: {
+  "currentGasPrice": "1000529337",
+  "gasPriceInGwei": "1.000529337",
+  "blockNumber": 56,
+  "blockGasLimit": "30000000",
+  "blockGasUsed": "21000",
+  "blockUtilization": "0%"
+}[0m
+[0m
+[36mTesting: Deploy test contracts[0m[0m
+[0m[32m✓ PASSED: Deploy test contracts (6ms)[0m[0m
+[0m  Result: {
+  "contractAddress": "0x82e01223d51Eb87e16A03E24687EDF0F294da6f1",
+  "estimatedDeployGas": "2301901",
+  "actualDeployGas": "2301901",
+  "deployGasAccuracy": {
+    "accurate": true,
+    "overEstimated": false,
+    "underEstimated": true,
+    "differenceWei": "0",
+    "differencePercentage": "0%"
+  },
+  "codeSize": 20328
+}[0m
+[0m
+[36mTesting: Deploy ERC20 test contract[0m[0m
+[0m[32m✓ PASSED: Deploy ERC20 test contract (6ms)[0m[0m
+[0m  Result: {
+  "contractAddress": "0x2bdCC0de6bE1f7D2ee689a0342D76F52E8EFABa3",
+  "estimatedDeployGas": "1616268",
+  "actualDeployGas": "1616268",
+  "deployGasAccuracy": {
+    "accurate": true,
+    "overEstimated": false,
+    "underEstimated": true,
+    "differenceWei": "0",
+    "differencePercentage": "0%"
+  }
+}[0m
+[0m
+[1m=== BASIC TRANSFER GAS ESTIMATION ===[0m[0m
+[0m
+[36mTesting: EOA to EOA transfer gas estimation[0m[0m
+[0m[32m✓ PASSED: EOA to EOA transfer gas estimation (1ms)[0m[0m
+[0m  Result: {
+  "transferAmount": "1000000000000000",
+  "estimatedGas": "21001",
+  "actualGas": "21000",
+  "accuracy": {
+    "accurate": true,
+    "overEstimated": true,
+    "underEstimated": false,
+    "differenceWei": "1",
+    "differencePercentage": "0%"
+  },
+  "standardTransferGas": "21000",
+  "isStandardGas": true
+}[0m
+[0m
+[36mTesting: Gas estimation for 0.000000000000000001 ETH transfer[0m[0m
+[0m[32m✓ PASSED: Gas estimation for 0.000000000000000001 ETH transfer (0ms)[0m[0m
+[0m  Result: {
+  "amount": "1",
+  "amountInEth": "0.000000000000000001",
+  "gasEstimate": "21001",
+  "shouldBeStandard": false
+}[0m
+[0m
+[36mTesting: Gas estimation for 0.000000001 ETH transfer[0m[0m
+[0m[32m✓ PASSED: Gas estimation for 0.000000001 ETH transfer (0ms)[0m[0m
+[0m  Result: {
+  "amount": "1000000000",
+  "amountInEth": "0.000000001",
+  "gasEstimate": "21001",
+  "shouldBeStandard": false
+}[0m
+[0m
+[36mTesting: Gas estimation for 0.1 ETH transfer[0m[0m
+[0m[32m✓ PASSED: Gas estimation for 0.1 ETH transfer (0ms)[0m[0m
+[0m  Result: {
+  "amount": "100000000000000000",
+  "amountInEth": "0.1",
+  "gasEstimate": "21001",
+  "shouldBeStandard": false
+}[0m
+[0m
+[36mTesting: Gas estimation for 10.0 ETH transfer[0m[0m
+[0m[32m✓ PASSED: Gas estimation for 10.0 ETH transfer (0ms)[0m[0m
+[0m  Result: {
+  "amount": "10000000000000000000",
+  "amountInEth": "10.0",
+  "gasEstimate": "21001",
+  "shouldBeStandard": false
+}[0m
+[0m
+[36mTesting: Gas estimation with different gas prices[0m[0m
+[0m[32m✓ PASSED: Gas estimation with different gas prices (1ms)[0m[0m
+[0m  Result: {
+  "results": [
+    {
+      "gasPrice": "500184020",
+      "gasPriceInGwei": "0.50018402",
+      "gasEstimate": "21001"
+    },
+    {
+      "gasPrice": "1000368041",
+      "gasPriceInGwei": "1.000368041",
+      "gasEstimate": "21001"
+    },
+    {
+      "gasPrice": "2000736082",
+      "gasPriceInGwei": "2.000736082",
+      "gasEstimate": "21001"
+    }
+  ],
+  "gasPriceAffectsEstimation": false
+}[0m
+[0m
+[1m=== CONTRACT CALL GAS ESTIMATION ===[0m[0m
+[0m
+[36mTesting: View function gas estimation[0m[0m
+[0m[32m✓ PASSED: View function gas estimation (0ms)[0m[0m
+[0m  Result: {
+  "function": "getCounter",
+  "type": "view",
+  "gasEstimate": "23479",
+  "note": "View functions usually don't consume gas when called"
+}[0m
+[0m
+[36mTesting: Pure function gas estimation[0m[0m
+[0m[32m✓ PASSED: Pure function gas estimation (1ms)[0m[0m
+[0m  Result: {
+  "function": "add",
+  "type": "pure",
+  "gasEstimate": "21890",
+  "note": "Pure functions usually don't consume gas when called"
+}[0m
+[0m
+[36mTesting: State-changing function: increment counter[0m[0m
+[0m[32m✓ PASSED: State-changing function: increment counter (1ms)[0m[0m
+[0m  Result: {
+  "function": "incrementCounter",
+  "description": "increment counter",
+  "estimatedGas": "47186",
+  "actualGas": "47186",
+  "accuracy": {
+    "accurate": true,
+    "overEstimated": false,
+    "underEstimated": true,
+    "differenceWei": "0",
+    "differencePercentage": "0%"
+  }
+}[0m
+[0m
+[36mTesting: State-changing function: increment counter by 10[0m[0m
+[0m[32m✓ PASSED: State-changing function: increment counter by 10 (0ms)[0m[0m
+[0m  Result: {
+  "function": "incrementCounterBy",
+  "description": "increment counter by 10",
+  "estimatedGas": "30297",
+  "actualGas": "30297",
+  "accuracy": {
+    "accurate": true,
+    "overEstimated": false,
+    "underEstimated": true,
+    "differenceWei": "0",
+    "differencePercentage": "0%"
+  }
+}[0m
+[0m
+[36mTesting: State-changing function: set message[0m[0m
+[0m[32m✓ PASSED: State-changing function: set message (1ms)[0m[0m
+[0m  Result: {
+  "function": "setMessage",
+  "description": "set message",
+  "estimatedGas": "33209",
+  "actualGas": "33209",
+  "accuracy": {
+    "accurate": true,
+    "overEstimated": false,
+    "underEstimated": true,
+    "differenceWei": "0",
+    "differencePercentage": "0%"
+  }
+}[0m
+[0m
+[36mTesting: State-changing function: add to array[0m[0m
+[0m[32m✓ PASSED: State-changing function: add to array (1ms)[0m[0m
+[0m  Result: {
+  "function": "addToArray",
+  "description": "add to array",
+  "estimatedGas": "65785",
+  "actualGas": "65785",
+  "accuracy": {
+    "accurate": true,
+    "overEstimated": false,
+    "underEstimated": true,
+    "differenceWei": "0",
+    "differencePercentage": "0%"
+  }
+}[0m
+[0m
+[36mTesting: Payable function gas estimation[0m[0m
+[0m[32m✓ PASSED: Payable function gas estimation (1ms)[0m[0m
+[0m  Result: {
+  "function": "deposit",
+  "type": "payable",
+  "value": "10000000000000000",
+  "estimatedGas": "45437",
+  "actualGas": "45437",
+  "accuracy": {
+    "accurate": true,
+    "overEstimated": false,
+    "underEstimated": true,
+    "differenceWei": "0",
+    "differencePercentage": "0%"
+  }
+}[0m
+[0m
+[36mTesting: Complex function gas estimation[0m[0m
+[0m[32m✓ PASSED: Complex function gas estimation (3ms)[0m[0m
+[0m  Result: {
+  "function": "gasIntensiveLoop",
+  "iterations": 50,
+  "estimatedGas": "48542",
+  "actualGas": "48354",
+  "gasPerIteration": "967",
+  "accuracy": {
+    "accurate": true,
+    "overEstimated": true,
+    "underEstimated": false,
+    "differenceWei": "188",
+    "differencePercentage": "0%"
+  }
+}[0m
+[0m
+[1m=== ERC20 GAS ESTIMATION ===[0m[0m
+[0m
+[36mTesting: ERC20 transfer gas estimation[0m[0m
+[0m[32m✓ PASSED: ERC20 transfer gas estimation (1ms)[0m[0m
+[0m  Result: {
+  "function": "transfer",
+  "amount": "100000000000000000000",
+  "estimatedGas": "124751",
+  "actualGas": "124751",
+  "accuracy": {
+    "accurate": true,
+    "overEstimated": false,
+    "underEstimated": true,
+    "differenceWei": "0",
+    "differencePercentage": "0%"
+  }
+}[0m
+[0m
+[36mTesting: ERC20 approve gas estimation[0m[0m
+[0m[32m✓ PASSED: ERC20 approve gas estimation (1ms)[0m[0m
+[0m  Result: {
+  "function": "approve",
+  "amount": "1000000000000000000000",
+  "estimatedGas": "48459",
+  "actualGas": "48459",
+  "accuracy": {
+    "accurate": true,
+    "overEstimated": false,
+    "underEstimated": true,
+    "differenceWei": "0",
+    "differencePercentage": "0%"
+  }
+}[0m
+[0m
+[36mTesting: ERC20 transferFrom gas estimation[0m[0m
+[0m[32m✓ PASSED: ERC20 transferFrom gas estimation (2ms)[0m[0m
+[0m  Result: {
+  "function": "transferFrom",
+  "amount": "50000000000000000000",
+  "estimatedGas": "64166",
+  "actualGas": "64166",
+  "accuracy": {
+    "accurate": true,
+    "overEstimated": false,
+    "underEstimated": true,
+    "differenceWei": "0",
+    "differencePercentage": "0%"
+  }
+}[0m
+[0m
+[36mTesting: ERC20 mint gas estimation[0m[0m
+[0m[32m✓ PASSED: ERC20 mint gas estimation (1ms)[0m[0m
+[0m  Result: {
+  "function": "mint",
+  "amount": "1000000000000000000000",
+  "estimatedGas": "60207",
+  "actualGas": "60207",
+  "accuracy": {
+    "accurate": true,
+    "overEstimated": false,
+    "underEstimated": true,
+    "differenceWei": "0",
+    "differencePercentage": "0%"
+  }
+}[0m
+[0m
+[36mTesting: ERC20 burn gas estimation[0m[0m
+[0m[32m✓ PASSED: ERC20 burn gas estimation (1ms)[0m[0m
+[0m  Result: {
+  "function": "burn",
+  "amount": "100000000000000000000",
+  "estimatedGas": "59585",
+  "actualGas": "59585",
+  "accuracy": {
+    "accurate": true,
+    "overEstimated": false,
+    "underEstimated": true,
+    "differenceWei": "0",
+    "differencePercentage": "0%"
+  }
+}[0m
+[0m
+[1m=== BATCH OPERATION GAS ESTIMATION ===[0m[0m
+[0m
+[36mTesting: Batch transfer gas estimation[0m[0m
+[0m[32m✓ PASSED: Batch transfer gas estimation (2ms)[0m[0m
+[0m  Result: {
+  "function": "batchTransfer",
+  "recipientCount": 3,
+  "totalAmount": "30000000000000000000",
+  "estimatedGas": "150480",
+  "actualGas": "149895",
+  "gasPerTransfer": "49965",
+  "accuracy": {
+    "accurate": true,
+    "overEstimated": true,
+    "underEstimated": false,
+    "differenceWei": "585",
+    "differencePercentage": "0%"
+  }
+}[0m
+[0m
+[36mTesting: Individual vs batch transfer gas comparison[0m[0m
+[0m[32m✓ PASSED: Individual vs batch transfer gas comparison (3ms)[0m[0m
+[0m  Result: {
+  "individualTransfers": 3,
+  "totalIndividualGas": "169005",
+  "batchGas": "81813",
+  "gasSavings": "87192",
+  "savingsPercentage": "51%",
+  "efficiency": "batch more efficient"
+}[0m
+[0m
+[1m=== EDGE CASE GAS ESTIMATION ===[0m[0m
+[0m
+[36mTesting: Gas estimation for failing transaction[0m[0m
+[0m[32m✓ PASSED: Gas estimation for failing transaction (1ms)[0m[0m
+[0m  Result: {
+  "result": "Gas estimation succeeded for failing tx",
+  "gasEstimate": "21001",
+  "note": "Some networks may allow gas estimation even for failing transactions"
+}[0m
+[0m
+[36mTesting: Gas estimation with very high gas price[0m[0m
+[0m[32m✓ PASSED: Gas estimation with very high gas price (0ms)[0m[0m
+[0m  Result: {
+  "gasPrice": "1000000000000",
+  "gasPriceInGwei": "1000.0",
+  "gasEstimate": "21001",
+  "result": "High gas price accepted"
+}[0m
+[0m
+[36mTesting: Gas estimation with very low gas price[0m[0m
+[0m[32m✓ PASSED: Gas estimation with very low gas price (0ms)[0m[0m
+[0m  Result: {
+  "gasPrice": "1",
+  "gasEstimate": "21001",
+  "result": "Low gas price accepted"
+}[0m
+[0m
+[36mTesting: Gas estimation to non-existent address[0m[0m
+[0m[32m✓ PASSED: Gas estimation to non-existent address (0ms)[0m[0m
+[0m  Result: {
+  "to": "0x1111111111111111111111111111111111111111",
+  "gasEstimate": "21001",
+  "shouldBeStandard": false
+}[0m
+[0m
+[1m=== EIP-1559 GAS ESTIMATION ===[0m[0m
+[0m
+[36mTesting: Fee history analysis[0m[0m
+[0m[32m✓ PASSED: Fee history analysis (0ms)[0m[0m
+[0m  Result: {
+  "supportsEIP1559": true,
+  "blockCount": 5,
+  "baseFeePerGas": [
+    "0x1f017",
+    "0x1b259",
+    "0x17c46",
+    "0x14cee",
+    "0x123bb"
+  ],
+  "reward": [
+    [
+      "0x3b9aca00",
+      "0x3b9aca00",
+      "0x3b9aca00"
+    ],
+    [
+      "0x3b9aca00",
+      "0x3b9aca00",
+      "0x3b9aca00"
+    ],
+    [
+      "0x3b9aca00",
+      "0x3b9aca00",
+      "0x3b9aca00"
+    ],
+    [
+      "0x3b9aca00",
+      "0x3b9aca00",
+      "0x3b9aca00"
+    ]
+  ],
+  "gasUsedRatio": [
+    0.0021388666666666664,
+    0.0020069,
+    0.001986166666666667,
+    0.0049965
+  ]
+}[0m
+[0m
+[36mTesting: Max priority fee per gas[0m[0m
+[0m[32m✓ PASSED: Max priority fee per gas (0ms)[0m[0m
+[0m  Result: {
+  "maxPriorityFeePerGas": "0x3b9aca00",
+  "maxPriorityFeeInGwei": "1.0"
+}[0m
+[0m
+[36mTesting: EIP-1559 transaction gas estimation[0m[0m
+[0m[32m✓ PASSED: EIP-1559 transaction gas estimation (1ms)[0m[0m
+[0m  Result: {
+  "gasEstimate": "21001",
+  "transactionType": "EIP-1559",
+  "baseFeePerGas": "85230",
+  "baseFeeInGwei": "0.00008523"
+}[0m
+[0m
+[1m=== GAS ESTIMATION ACCURACY ANALYSIS ===[0m[0m
+[0m
+[36mTesting: Gas estimation accuracy summary[0m[0m
+[0m[32m✓ PASSED: Gas estimation accuracy summary (0ms)[0m[0m
+[0m  Result: {
+  "totalEstimations": 6,
+  "accurateEstimations": 6,
+  "overEstimations": 1,
+  "underEstimations": 5,
+  "accuracyRate": "100.00%",
+  "averageDifference": "0",
+  "estimationTypes": {
+    "eoa_transfer": 1,
+    "contract_call": 4,
+    "erc20_transfer": 1
+  }
+}[0m
+[0m
+[36mTesting: Gas estimation by transaction type[0m[0m
+[0m[32m✓ PASSED: Gas estimation by transaction type (0ms)[0m[0m
+[0m  Result: {
+  "eoa_transfer": {
+    "total": 1,
+    "accuracyRate": "100.00%",
+    "overEstimatedRate": "100.00%",
+    "underEstimatedRate": "0.00%"
+  },
+  "contract_call": {
+    "total": 4,
+    "accuracyRate": "100.00%",
+    "overEstimatedRate": "0.00%",
+    "underEstimatedRate": "100.00%"
+  },
+  "erc20_transfer": {
+    "total": 1,
+    "accuracyRate": "100.00%",
+    "overEstimatedRate": "0.00%",
+    "underEstimatedRate": "100.00%"
+  }
+}[0m
+[0m
+[1m=== GAS ESTIMATION REPORT ===[0m[0m
+[0mTotal Gas Estimations: 6[0m
+[0mAccurate Estimations: 6 (100.00%)[0m
+[0mOver-estimations: 1[0m
+[0mUnder-estimations: 5[0m
+[0mTotal Estimated Gas: 322229[0m
+[0mTotal Actual Gas: 322228[0m
+[0m
+[1m=== GAS ESTIMATION TEST SUMMARY ===[0m[0m
+[0m[32mPassed: 33[0m[0m
+[0m[31mFailed: 0[0m[0m
+[0m[36mTotal: 33[0m[0m
+[0m[33mDuration: 53ms[0m[0m
+[0m[1mSuccess Rate: 100.0%[0m[0m
+[0m
+[36mDeployed Contracts:[0m[0m
+[0mtestContract: 0x82e01223d51Eb87e16A03E24687EDF0F294da6f1[0m
+[0mtestERC20: 0x2bdCC0de6bE1f7D2ee689a0342D76F52E8EFABa3[0m
+[0m
+[32m✓ EVM Gas Estimation completed in 53ms[0m[0m
+[0m
+[1m[35m================================================[0m[0m
+[0m[1m[35mRUNNING COSMOS TEST SUITE: BANK MODULE[0m[0m
+[0m[1m[35m================================================[0m[0m
+[0m
+[1m=== INITIALIZING COSMOS SDK BANK TESTER ===[0m[0m
+[0m[34mInitializing eth_secp256k1 wallet...[0m[0m
+[0m[34mUsing Ethereum secp256k1 derivation (coin type: 60)[0m[0m
+[0m[32m✓ Wallet initialized[0m[0m
+[0m[34mConnecting to RPC endpoint...[0m[0m
+[0m[32m✓ Query client connected[0m[0m
+[0m[32m✓ RealioJS wallet ready for signing[0m[0m
+[0m[34mTesting connectivity...[0m[0m
+[0m[32m✓ Connected to chain: realionetwork_3301-1[0m[0m
+[0m[32m✓ Sender address: realio1jcltmuhplrdcwp7stlr4hlhlhgd4htqh6ftpkj[0m[0m
+[0m[32m✓ RPC URL: http://localhost:26657[0m[0m
+[0m[32m✓ Test denomination: ario[0m[0m
+[0m[32m✓ Chain type: Cosmos/EVM (eth_secp256k1)[0m[0m
+[0m
+[1m=== BANK MODULE QUERIES ===[0m[0m
+[0m
+undefinedTesting: Query sender balance[0m[0m
+[34m  Balance: 999661899878393403849ario[0m
+[0m[32m✓ PASSED: Query sender balance (2ms)[0m[0m
+[34m  Result: {
+  "denom": "ario",
+  "amount": "999661899878393403849"
+}[0m
+[0m
+undefinedTesting: Query all balances[0m[0m
+[34m  Total balances: 1[0m
+[34m    999661899878393403849ario[0m
+[0m[32m✓ PASSED: Query all balances (1ms)[0m[0m
+[34m  Result: [
+  {
+    "denom": "ario",
+    "amount": "999661899878393403849"
+  }
+][0m
+[0m
+undefinedTesting: Query total supply[0m[0m
+[34m  Total supply entries: 2[0m
+[0m[32m✓ PASSED: Query total supply (2ms)[0m[0m
+[34m  Result: [
+  {
+    "denom": "ario",
+    "amount": "100004502029689717041602072"
+  },
+  {
+    "denom": "stake",
+    "amount": "1000000000000000000000"
+  }
+][0m
+[0m
+undefinedTesting: Query denomination metadata[0m[0m
+[34m  Metadata entries: 1[0m
+[0m[32m✓ PASSED: Query denomination metadata (1ms)[0m[0m
+[34m  Result: [
+  {
+    "description": "The native staking token for realio-networkd.",
+    "denom_units": [
+      {
+        "denom": "ario",
+        "exponent": 0,
+        "aliases": [
+          "attorio"
+        ]
+      },
+      {
+        "denom": "rio",
+        "exponent": 18,
+        "aliases": []
+      }
+    ],
+    "base": "ario",
+    "display": "rio",
+    "name": "Rio Token",
+    "symbol": "RIO",
+    "uri": "",
+    "uri_hash": ""
+  }
+][0m
+[0m
+undefinedTesting: Query bank params[0m[0m
+[34m  Send enabled: [0m
+[0m[32m✓ PASSED: Query bank params (2ms)[0m[0m
+[34m  Result: {
+  "send_enabled": [],
+  "default_send_enabled": true
+}[0m
+[0m
+[1m=== BANK MODULE TRANSACTIONS ===[0m[0m
+[34mInitial balance: 999661899878393403849ario[0m
+[34mRecipient address: realio1jcltmuhplrdcwp7stlr4hlhlhgd4htqh6ftpkj[0m
+[0m
+undefinedTesting: Send transaction[0m[0m
+Account data: {
+  "account": {
+    "@type": "/cosmos.auth.v1beta1.BaseAccount",
+    "address": "realio1jcltmuhplrdcwp7stlr4hlhlhgd4htqh6ftpkj",
+    "pub_key": {
+      "@type": "/ethermint.crypto.v1.ethsecp256k1.PubKey",
+      "key": "ArMvs2q6M7Tu0EoohH+TvZGcHe3KWuaAJJeRpEp6jskn"
+    },
+    "account_number": "2",
+    "sequence": "15"
+  }
+}
+Send transaction broadcast response: {
+  "tx_response": {
+    "height": "0",
+    "txhash": "2F3D2B28BC7445F670D6AD1B3A565B7CFBA757CB1C255BBDA70BD89144E4821F",
+    "codespace": "",
+    "code": 0,
+    "data": "",
+    "raw_log": "",
+    "logs": [],
+    "info": "",
+    "gas_wanted": "0",
+    "gas_used": "0",
+    "tx": null,
+    "timestamp": "",
+    "events": []
+  }
+}
+[34m  Transaction hash: 2F3D2B28BC7445F670D6AD1B3A565B7CFBA757CB1C255BBDA70BD89144E4821F[0m
+[34m  Gas used: 0[0m
+[34m  Gas wanted: undefined[0m
+[0m[32m✓ PASSED: Send transaction (1011ms)[0m[0m
+[34m  Result: {
+  "transactionHash": "2F3D2B28BC7445F670D6AD1B3A565B7CFBA757CB1C255BBDA70BD89144E4821F",
+  "gasUsed": "0",
+  "code": 0
+}[0m
+[0m
+undefinedTesting: Verify send transaction[0m[0m
+[34m  Sender balance after send: 999661899878393403849ario[0m
+[34m  Recipient balance after send: 999661899878393403849ario[0m
+[34m  Balance difference (fees): 0ario[0m
+[0m[32m✓ PASSED: Verify send transaction (3ms)[0m[0m
+[34m  Result: {
+  "senderBalance": {
+    "denom": "ario",
+    "amount": "999661899878393403849"
+  },
+  "recipientBalance": {
+    "denom": "ario",
+    "amount": "999661899878393403849"
+  },
+  "feePaid": 0
+}[0m
+[0m
+undefinedTesting: Small amount transaction[0m[0m
+Account data for small tx: {
+  "account": {
+    "@type": "/cosmos.auth.v1beta1.BaseAccount",
+    "address": "realio1jcltmuhplrdcwp7stlr4hlhlhgd4htqh6ftpkj",
+    "pub_key": {
+      "@type": "/ethermint.crypto.v1.ethsecp256k1.PubKey",
+      "key": "ArMvs2q6M7Tu0EoohH+TvZGcHe3KWuaAJJeRpEp6jskn"
+    },
+    "account_number": "2",
+    "sequence": "15"
+  }
+}
+Small transaction broadcast response: {
+  "tx_response": {
+    "height": "0",
+    "txhash": "77ECFF9D7B5871F98F846E10F8A1663D5C3F79B047C81A347E4CB0748B9D8774",
+    "codespace": "sdk",
+    "code": 32,
+    "data": "",
+    "raw_log": "account sequence mismatch, expected 16, got 15: incorrect account sequence",
+    "logs": [],
+    "info": "",
+    "gas_wanted": "0",
+    "gas_used": "0",
+    "tx": null,
+    "timestamp": "",
+    "events": []
+  }
+}
+[0m[31m✗ FAILED: Small amount transaction[0m[0m
+[31m  Error: Transaction failed: account sequence mismatch, expected 16, got 15: incorrect account sequence[0m
+Error: Transaction failed: account sequence mismatch, expected 16, got 15: incorrect account sequence
+    at /Users/freddycaceres/Repositories/realio/upgrades-tests-scripts/scripts/test-cosmos-bank.js:658:17
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async CosmosBankTester.runTest (/Users/freddycaceres/Repositories/realio/upgrades-tests-scripts/scripts/test-cosmos-bank.js:249:22)
+    at async CosmosBankTester.testBankTransactions (/Users/freddycaceres/Repositories/realio/upgrades-tests-scripts/scripts/test-cosmos-bank.js:588:5)
+    at async CosmosBankTester.runAllTests (/Users/freddycaceres/Repositories/realio/upgrades-tests-scripts/scripts/test-cosmos-bank.js:904:7)
+    at async ComprehensiveTestRunner.runCosmosTestSuite (/Users/freddycaceres/Repositories/realio/upgrades-tests-scripts/scripts/run-comprehensive-tests.js:170:22)
+    at async ComprehensiveTestRunner.run (/Users/freddycaceres/Repositories/realio/upgrades-tests-scripts/scripts/run-comprehensive-tests.js:736:9)
+    at async main (/Users/freddycaceres/Repositories/realio/upgrades-tests-scripts/scripts/run-comprehensive-tests.js:772:21)
+[0m
+[1m=== ADVANCED BANK QUERIES ===[0m[0m
+[0m
+undefinedTesting: Query balances with pagination[0m[0m
+[34m  Balances with pagination: 1[0m
+[34m  Next key: null[0m
+[34m  Total: 0[0m
+[0m[32m✓ PASSED: Query balances with pagination (1ms)[0m[0m
+[34m  Result: {
+  "balances": [
+    {
+      "denom": "ario",
+      "amount": "999661899878393403849"
+    }
+  ],
+  "pagination": {
+    "next_key": null,
+    "total": "0"
+  }
+}[0m
+[0m
+undefinedTesting: Query spendable balances[0m[0m
+[34m  Spendable balances: 1[0m
+[0m[32m✓ PASSED: Query spendable balances (1ms)[0m[0m
+[34m  Result: [
+  {
+    "denom": "ario",
+    "amount": "999661899878393403849"
+  }
+][0m
+[0m
+undefinedTesting: Query denomination traces[0m[0m
+[34m  Denomination traces: 0[0m
+[0m[32m✓ PASSED: Query denomination traces (0ms)[0m[0m
+[0m
+[1m=== TESTING COMPLETED ===[0m[0m
+[0mTotal Duration: 3073ms[0m
+[0m
+[1m=== TEST RESULTS SUMMARY ===[0m[0m
+[0m[1mOverall Results:[0m[0m
+[0m  Total Tests: 11[0m
+[0m  Passed: [32m10[0m[0m
+[0m  Failed: [31m1[0m[0m
+[0m  Success Rate: [32m90.91%[0m[0m
+[0m
+[1mQuery Tests:[0m[0m
+[0m  Total: 9[0m
+[0m  Passed: [32m9[0m[0m
+[0m  Failed: [31m0[0m[0m
+[0m  Success Rate: [32m100.00%[0m[0m
+[0m
+[1mTransaction Tests:[0m[0m
+[0m  Total: 2[0m
+[0m  Passed: [32m1[0m[0m
+[0m  Failed: [31m1[0m[0m
+[0m  Success Rate: [31m50.00%[0m[0m
+[0m
+[32m✓ Results saved to:[0m[0m
+[0m  /Users/freddycaceres/Repositories/realio/upgrades-tests-scripts/test-results/cosmos-bank-results-2025-06-13T22-51-19-998Z.json[0m
+[0m  /Users/freddycaceres/Repositories/realio/upgrades-tests-scripts/test-results/cosmos-bank-latest.json[0m
+[0m
+[32m✓ Cosmos Bank Module completed in 3074ms[0m[0m
+[0m
+[1m=== DETAILED TEST RESULTS ===[0m[0m
+[0m
+[1m[36mEVM Test Suites:[0m[0m
+[0m  [32mRPC Calls:[0m[0m
+[0m    Status: [32mcompleted[0m[0m
+[0m    Tests: 30 | Passed: 30 | Failed: 0[0m
+[0m    Success Rate: [32m100.00%[0m[0m
+[0m    Duration: 18ms[0m
+[0m  [32mContracts:[0m[0m
+[0m    Status: [32mcompleted[0m[0m
+[0m    Tests: 33 | Passed: 33 | Failed: 0[0m
+[0m    Success Rate: [32m100.00%[0m[0m
+[0m    Duration: 60ms[0m
+[0m  [32mTransfers:[0m[0m
+[0m    Status: [32mcompleted[0m[0m
+[0m    Tests: 21 | Passed: 21 | Failed: 0[0m
+[0m    Success Rate: [32m100.00%[0m[0m
+[0m    Duration: 5020ms[0m
+[0m  [32mGas Estimation:[0m[0m
+[0m    Status: [32mcompleted[0m[0m
+[0m    Tests: 33 | Passed: 33 | Failed: 0[0m
+[0m    Success Rate: [32m100.00%[0m[0m
+[0m    Duration: 53ms[0m
+[0m
+[1m[35mCosmos Test Suites:[0m[0m
+[0m  [32mBank Module:[0m[0m
+[0m    Status: [32mcompleted[0m[0m
+[0m    Tests: 11 | Passed: 10 | Failed: 1[0m
+[0m    Success Rate: [32m90.91%[0m[0m
+[0m    Duration: 3074ms[0m
+[0m    Query Tests: 9 | Passed: 9 | Failed: 0[0m
+[0m    Transaction Tests: 2 | Passed: 1 | Failed: 1[0m
+[0m
+[1m[37m================================================================[0m[0m
+[0m[1m[37m                    COMPREHENSIVE TEST SUMMARY                   [0m[0m
+[0m[1m[37m================================================================[0m[0m
+[0m
+[1mOverall Results:[0m[0m
+[0m  Total Tests: 128[0m
+[0m  Passed: [32m127[0m[0m
+[0m  Failed: [31m1[0m[0m
+[0m  Success Rate: [32m99.22%[0m[0m
+[0m  Duration: 8493ms[0m
+[0m
+[1m[36mEVM Results:[0m[0m
+[0m  Total Tests: 117[0m
+[0m  Passed: [32m117[0m[0m
+[0m  Failed: [31m0[0m[0m
+[0m  Success Rate: [32m100.00%[0m[0m
+[0m  Test Suites: 4[0m
+[0m
+[1m[35mCosmos Results:[0m[0m
+[0m  Total Tests: 11[0m
+[0m  Passed: [32m10[0m[0m
+[0m  Failed: [31m1[0m[0m
+[0m  Success Rate: [32m90.91%[0m[0m
+[0m  Test Suites: 1[0m
+[0m
+[1mRecommendations:[0m[0m
+[0m  [32m🎉 Excellent! Your chain is performing exceptionally well.[0m[0m
+[0m
+[32m✓ Results saved to:[0m[0m
+[0m  /Users/freddycaceres/Repositories/realio/upgrades-tests-scripts/test-results/comprehensive-results-2025-06-13T22-51-20-000Z.json[0m
+[0m  /Users/freddycaceres/Repositories/realio/upgrades-tests-scripts/test-results/comprehensive-latest.json[0m
+
+[32m[1m🎉 All tests completed successfully! 🎉[0m

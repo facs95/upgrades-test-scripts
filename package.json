@@ -1,7 +1,7 @@
 {
   "name": "upgrades-tests-scripts",
   "version": "1.0.0",
-  "description": "Comprehensive EVM chain testing scripts",
+  "description": "Comprehensive EVM chain and Cosmos SDK testing scripts",
   "main": "index.js",
   "scripts": {
     "test": "npx hardhat test",
@@ -14,6 +14,10 @@
     "test:hardhat": "npx hardhat run scripts/test-rpc-calls.js && npx hardhat run scripts/test-contracts.js && npx hardhat run scripts/test-transfers.js && npx hardhat run scripts/test-gas-estimation.js",
     "test:all-runner": "node scripts/run-all-tests.js",
     "test:legacy": "npm run test:rpc && npm run test:contracts && npm run test:transfers && npm run test:gas",
+    "test:cosmos": "node scripts/test-cosmos-bank.js",
+    "test:cosmos-connectivity": "node scripts/test-cosmos-connectivity.js",
+    "test:derivation-paths": "node scripts/test-derivation-paths.js",
+    "test:comprehensive": "node scripts/run-comprehensive-tests.js",
     "compile": "npx hardhat compile",
     "node": "npx hardhat node",
     "clean": "npx hardhat clean"
@@ -21,6 +25,8 @@
   "keywords": [
     "ethereum",
     "evm",
+    "cosmos",
+    "cosmos-sdk",
     "blockchain",
     "testing",
     "hardhat",
@@ -29,13 +35,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
-    "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
     "@nomicfoundation/hardhat-ethers": "^3.0.0",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
     "@nomicfoundation/hardhat-verify": "^2.0.0",
-    "@typechain/hardhat": "^9.1.0",
     "@typechain/ethers-v6": "^0.5.0",
+    "@typechain/hardhat": "^9.1.0",
     "chai": "^4.2.0",
     "ethers": "^6.4.0",
     "hardhat": "^2.19.0",
@@ -44,6 +50,12 @@
     "typechain": "^8.3.0"
   },
   "dependencies": {
+    "@cosmjs/amino": "^0.31.3",
+    "@cosmjs/cosmwasm-stargate": "^0.31.3",
+    "@cosmjs/proto-signing": "^0.31.3",
+    "@cosmjs/stargate": "^0.31.3",
+    "@cosmjs/tendermint-rpc": "^0.31.3",
+    "@realiotech/realiojs": "^2.6.0",
     "axios": "^1.6.0",
     "dotenv": "^16.3.1"
   }

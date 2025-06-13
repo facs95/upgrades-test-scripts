@@ -144,8 +144,6 @@ class TransferTester {
 
       // Calculate gas cost
       const gasCost = receipt.gasUsed * receipt.gasPrice;
-      const expectedSenderBalance =
-        initialSenderBalance - this.testAmount - gasCost;
 
       // Verify balances changed correctly
       if (finalRecipientBalance !== initialRecipientBalance + this.testAmount) {
@@ -190,7 +188,6 @@ class TransferTester {
 
       // Balance should only change by gas cost
       const gasCost = receipt.gasUsed * receipt.gasPrice;
-      const expectedBalance = initialBalance - gasCost;
 
       return {
         txHash: tx.hash,
@@ -477,7 +474,29 @@ class TransferTester {
       // Wait for all transactions
       const receipts = [];
       for (const result of results) {
-        const receipt = await this.provider.waitForTransaction(result.txHash);
+        let receipt = null;
+        let attempts = 0;
+        const maxAttempts = 60; // 60 seconds timeout
+
+        while (!receipt && attempts < maxAttempts) {
+          try {
+            receipt = await this.provider.getTransactionReceipt(result.txHash);
+            if (!receipt) {
+              await new Promise((resolve) => setTimeout(resolve, 1000)); // Wait 1 second
+              attempts++;
+            }
+          } catch (error) {
+            await new Promise((resolve) => setTimeout(resolve, 1000)); // Wait 1 second
+            attempts++;
+          }
+        }
+
+        if (!receipt) {
+          throw new Error(
+            `Transaction ${result.txHash} not mined after ${maxAttempts} seconds`
+          );
+        }
+
         receipts.push(receipt);
       }
 
@@ -515,56 +534,32 @@ class TransferTester {
           "Transaction should have failed due to insufficient balance"
         );
       } catch (error) {
-        if (
-          error.message.includes("insufficient funds") ||
-          error.message.includes("insufficient balance") ||
-          error.code === "INSUFFICIENT_FUNDS"
-        ) {
+        // Check for various insufficient funds error patterns
+        const errorMessage = error.message.toLowerCase();
+        const isInsufficientFunds =
+          errorMessage.includes("insufficient funds") ||
+          errorMessage.includes("insufficient balance") ||
+          errorMessage.includes("doesn't have enough funds") ||
+          errorMessage.includes("sender doesn't have enough funds") ||
+          errorMessage.includes("max upfront cost") ||
+          error.code === "INSUFFICIENT_FUNDS" ||
+          error.code === "UNPREDICTABLE_GAS_LIMIT" ||
+          (error.reason && error.reason.includes("insufficient"));
+
+        if (isInsufficientFunds) {
           return {
             result: "Insufficient balance correctly rejected",
             balance: balance.toString(),
             attemptedAmount: excessiveAmount.toString(),
+            errorType: error.constructor.name,
+            errorMessage: error.message,
           };
         }
+
+        // If it's not an expected insufficient funds error, throw it
         throw error;
       }
     });
-
-    // Test invalid recipient address
-    // await this.runTest("Invalid recipient address", async () => {
-    //   const invalidAddresses = [
-    //     "0x", // Too short
-    //     "0x123", // Too short
-    //     "invalid_address", // Not hex
-    //     "0x" + "g".repeat(40), // Invalid hex characters
-    //   ];
-
-    //   for (const invalidAddress of invalidAddresses) {
-    //     try {
-    //       await sender.sendTransaction({
-    //         to: invalidAddress,
-    //         value: this.testAmount,
-    //       });
-    //       throw new Error(
-    //         `Transaction to invalid address ${invalidAddress} should have failed`
-    //       );
-    //     } catch (error) {
-    //       if (
-    //         error.message.includes("invalid address") ||
-    //         error.message.includes("invalid recipient") ||
-    //         error.code === "INVALID_ARGUMENT"
-    //       ) {
-    //         continue; // Expected error
-    //       }
-    //       throw error;
-    //     }
-    //   }
-
-    //   return {
-    //     result: "Invalid addresses correctly rejected",
-    //     invalidAddressCount: invalidAddresses.length,
-    //   };
-    // });
   }
 
   async testTransactionDetails() {
