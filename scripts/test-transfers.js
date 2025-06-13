@@ -22,7 +22,7 @@ class TransferTester {
     this.verbose = process.env.VERBOSE === "true";
     this.signers = [];
     this.testAmount = ethers.parseEther(
-      process.env.TEST_TRANSFER_AMOUNT || "0.001"
+      process.env.TEST_TRANSFER_AMOUNT_ETH || "0.001"
     );
     this.transferHistory = [];
   }
